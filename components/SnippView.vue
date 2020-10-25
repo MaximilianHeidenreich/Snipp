@@ -14,6 +14,7 @@
             @push-snipp="pushSnipp"
             @navigate-new="navigateNew"
             @toggle-linenums="toggleLineNums"
+            @copy-clipboard="copyContentToClipboard"
 
             :snippName="snippName"
         />
@@ -24,7 +25,9 @@
             
             :displayLineNums="displayLineNums"
             :ownerPin="ownerPin"
-            :snippContent="snippContent"
+            readOnly="false"
+            :snippContent="decodedContent"
+            :darkTheme="darkTheme"
         />
     </section>
 </template>
@@ -44,8 +47,6 @@ export default {
     data() {
         return {
 
-            // 
-
             // Snipp
             snippID: this.$route.params.snippID ? this.$route.params.snippID : null,
             snippName: 'New Snipp',
@@ -53,7 +54,6 @@ export default {
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
             // Config
-            appearance: 'light',
             displayLineNums: this.displayLineNumsStorage
 
         }
@@ -83,8 +83,14 @@ export default {
             else return "0000-0000";
         },
 
-        // Returns encoded codeJar content.
-        encodedJarContent() { return this.utf8_to_b64(this.$refs.codeEditor.content) },
+        // Whether to use dark theme.
+        darkTheme() { return false },
+
+        // Returns raw editor content.
+        rawEditorContent() { return this.$refs.codeEditor.code },
+
+        // Returns encoded editor content.
+        encodedEditorContent() { return this.utf8_to_b64(this.rawEditorContent) },
 
     },
 
@@ -138,7 +144,7 @@ export default {
                     name: this.$data.snippName,
                     lang: this.$data.snippLang,
                     ownerPin: this.ownerPin,
-                    content: this.encodedJarContent
+                    content: this.encodedEditorContent
                 }).then(function (response) {
 
                     if (response.status === 200) {
@@ -146,6 +152,8 @@ export default {
                         console.log(response)
                         that.$data.snippID = response.data.data.snippID
                         that.$router.push({ path: `/${response.data.data.snippID}` })
+
+                        that.copyShareLinkToClipboard()
 
                         Toast.open({
                             duration: 3000,
@@ -162,6 +170,14 @@ export default {
                 })
                 .catch(function (error) {
                     console.log(error);
+
+                    Toast.open({
+                        duration: 3000,
+                        message: `Snipp could not be created: Request error!`,
+                        position: 'is-bottom',
+                        type: 'is-danger'
+                    })
+
                 });
             }
 
@@ -173,7 +189,7 @@ export default {
                     name: this.$data.snippName,
                     lang: this.$data.snippLang,
                     ownerPin: this.ownerPin,
-                    content: this.encodedJarContent
+                    content: this.encodedEditorContent
                 }).then(function (response) {
 
                     if (response.status === 200) {
@@ -207,10 +223,58 @@ export default {
                 })
                 .catch(function (error) {
                     console.log(error);
+
+                    Toast.open({
+                        duration: 3000,
+                        message: `Snipp could not be updated: Request error`,
+                        position: 'is-bottom',
+                        type: 'is-danger'
+                    })
+
                 });
 
             }
 
+        },
+
+        // Copies editor content to clipboard.
+        copyContentToClipboard() {
+            try {
+                this.copyToClipboard(this.rawEditorContent)
+                Toast.open({
+                    duration: 3000,
+                    message: `Content copied to clipboard!`,
+                    position: 'is-bottom',
+                    type: 'is-info'
+                })
+            }
+            catch (err) {
+                consola.error('Could not copy content to clipboard!')
+                console.log(err)
+                Toast.open({
+                    duration: 3000,
+                    message: `Could not copy content to clipboard!`,
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                })
+            }
+        },
+
+        // Copies sharable link to clipboard.
+        copyShareLinkToClipboard() {
+            try {
+                this.copyToClipboard(`https://snipp.site/${this.$data.snippID}`)
+            }
+            catch (err) {
+                consola.error('Could not copy link to clipboard!')
+                console.log(err)
+                Toast.open({
+                    duration: 3000,
+                    message: `Could not copy link to clipboard!`,
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                })
+            }
         },
 
         // Navigate to /
@@ -224,8 +288,20 @@ export default {
             this.$data.displayLineNums = !this.$data.displayLineNums
         },
 
+        // Clipboard helper.
+        copyToClipboard(text) {
+            var input = document.createElement('textarea');
+            input.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+            input.innerHTML = text;
+            document.body.appendChild(input);
+            input.select();
+            var result = document.execCommand('copy');
+            document.body.removeChild(input);
+            return result;
+        },
+
         // Encoding / Decoding
-        utf8_to_b64: (str) => btoa(unescape(encodeURIComponent( str ))),
+        utf8_to_b64: (str) => btoa(unescape(encodeURIComponent(str))),
         b64_to_utf8: (str) => decodeURIComponent(escape(atob(str)))
 
     }

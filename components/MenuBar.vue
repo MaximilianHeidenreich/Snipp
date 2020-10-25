@@ -81,6 +81,13 @@
           </span>
         </a>
 
+        <!-- Copy to clip -->
+        <a class="navbar-item" v-on:click="$emit('copy-clipboard', {})">
+          <span class="icon">
+            <i class="mdi mdi-clipboard-multiple-outline"></i>
+          </span>
+        </a>
+
         <!-- Settings -->
         <a class="navbar-item">
           <span class="icon">
