@@ -107,7 +107,7 @@ export default {
     
     // Sets the contents.
     setCode(text) {
-      //this.$data.codeJar.updateCode(text)
+      this.$data.code = text
     },
 
     // Force update

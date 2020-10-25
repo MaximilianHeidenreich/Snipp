@@ -62,7 +62,7 @@ export default {
     // ========== WATCH
     watch: {
         snippContent: function () {
-            this.$refs.codeEditor.code = this.b64_to_utf8(this.snippContent)
+            this.$refs.codeEditor.setCode() // = this.b64_to_utf8(this.snippContent)
         }
     },
 
