@@ -1,7 +1,13 @@
 {
-  "name": "snippV2",
+  "name": "snipp",
   "version": "1.0.0",
-  "private": true,
+  "homepage": "https://snipp.maximilian-heidenreich.de/about",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaximilianHeidenreich/Snipp-api.git"
+  },
+  "author": "MaximilianHeidenreich <github@maximilian-heidenreich.de>",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -10,10 +16,12 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
+    "codejar": "^3.2.2",
     "consola": "^2.15.0",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
-    "nuxt-buefy": "^0.4.3"
+    "nuxt-buefy": "^0.4.3",
+    "prismjs": "^1.22.0"
   },
   "devDependencies": {}
 }
