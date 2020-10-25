@@ -1,29 +1,68 @@
 <template>
-  <section class="section"><div id="editor"></div></section>
+  <section class="section">
+    <prism-editor
+      ref="editor"
+      v-bind:class="['snipp-editor', darkTheme ? 'editor-dark' : 'editor-light']"
+      v-model="code"
+      :highlight="highlighter"
+      :read-only="readOnly"
+      :line-numbers="displayLineNums"
+    />
+  </section>
 </template>
 
 <style>
-/* CSS */
+/* Editor Style */
+.snipp-editor {
+  /*background: #2d2d2d;
+  /*color: #ccc;*/
+
+  /* you must provide font-family font-size line-height. Example: */
+  font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 6px;
+}
+.prism-editor__textarea:focus {
+  outline: none;
+}
+
+/* Light Theme */
+.editor-light code[class*="language-"],.editor-light pre[class*="language-"]{text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;color:#90a4ae;background:#fafafa;font-family:Roboto Mono, monospace;font-size:1em;line-height:1.5em;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}.editor-light code[class*="language-"]::-moz-selection,.editor-light pre[class*="language-"]::-moz-selection,.editor-light code[class*="language-"] ::-moz-selection,.editor-light pre[class*="language-"] ::-moz-selection{background:#cceae7;color:#263238}.editor-light code[class*="language-"]::selection,.editor-light pre[class*="language-"]::selection,.editor-light code[class*="language-"] ::selection,.editor-light pre[class*="language-"] ::selection{background:#cceae7;color:#263238}.editor-light:not(pre) > code[class*="language-"]{white-space:normal;border-radius:0.2em;padding:0.1em}.editor-light pre[class*="language-"]{overflow:auto;position:relative;margin:0.5em 0;padding:1.25em 1em}.editor-light .language-css > code,.editor-light .language-sass > code,.editor-light .language-scss > code{color:#f76d47}.editor-light [class*="language-"] .namespace{opacity:0.7}.editor-light .token.atrule{color:#7c4dff}.editor-light .token.attr-name{color:#39adb5}.editor-light .token.attr-value{color:#f6a434}.editor-light .token.attribute{color:#f6a434}.editor-light .token.boolean{color:#7c4dff}.editor-light .token.builtin{color:#39adb5}.editor-light .token.cdata{color:#39adb5}.editor-light .token.char{color:#39adb5}.editor-light .token.class{color:#39adb5}.editor-light .token.class-name{color:#6182b8}.editor-light .token.comment{color:#aabfc9}.editor-light .token.constant{color:#7c4dff}.editor-light .token.deleted{color:#e53935}.editor-light .token.doctype{color:#aabfc9}.editor-light .token.entity{color:#e53935}.editor-light .token.function{color:#7c4dff}.editor-light .token.hexcode{color:#f76d47}.editor-light .token.id{color:#7c4dff;font-weight:bold}.editor-light .token.important{color:#7c4dff;font-weight:bold}.editor-light .token.inserted{color:#39adb5}.editor-light .token.keyword{color:#7c4dff}.editor-light .token.number{color:#f76d47}.editor-light .token.operator{color:#39adb5}.editor-light .token.prolog{color:#aabfc9}.editor-light .token.property{color:#39adb5}.editor-light .token.pseudo-class{color:#f6a434}.editor-light .token.pseudo-element{color:#f6a434}.editor-light .token.punctuation{color:#39adb5}.editor-light .token.regex{color:#6182b8}.editor-light .token.selector{color:#e53935}.editor-light .token.string{color:#f6a434}.editor-light .token.symbol{color:#7c4dff}.editor-light .token.tag{color:#e53935}.editor-light .token.unit{color:#f76d47}.editor-light .token.url{color:#e53935}.editor-light .token.variable{color:#e53935}
+
+/* Dark Theme */
+.editor-dark code[class*="language-"],.editor-dark pre[class*="language-"]{color:#f8f8f2;background:none;font-family:"Fira Code", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}.editor-dark pre[class*="language-"]{padding:1em;margin:0.5em 0;overflow:auto;border-radius:0.3em}.editor-dark:not(pre) > code[class*="language-"],.editor-dark pre[class*="language-"]{background:#2E3440}.editor-dark:not(pre) > code[class*="language-"]{padding:0.1em;border-radius:0.3em;white-space:normal}.editor-dark .token.cdata,.editor-dark .token.comment,.editor-dark .token.doctype,.editor-dark .token.prolog{color:#636f88}.editor-dark .token.punctuation{color:#81A1C1}.editor-dark .namespace{opacity:0.7}.editor-dark .token.constant,.editor-dark .token.deleted,.editor-dark .token.property,.editor-dark .token.symbol,.editor-dark .token.tag{color:#81A1C1}.editor-dark .token.number{color:#B48EAD}.editor-dark .token.boolean{color:#81A1C1}.editor-dark .token.attr-name,.editor-dark .token.builtin,.editor-dark .token.char,.editor-dark .token.inserted,.editor-dark .token.selector,.editor-dark .token.string{color:#A3BE8C}.editor-dark .language-css .token.string,.editor-dark .style .token.string,.editor-dark .token.entity,.editor-dark .token.operator,.editor-dark .token.url,.editor-dark .token.variable{color:#81A1C1}.editor-dark .token.atrule,.editor-dark .token.attr-value,.editor-dark .token.class-name,.editor-dark .token.function{color:#88C0D0}.editor-dark .token.keyword{color:#81A1C1}.editor-dark .token.important,.editor-dark .token.regex{color:#EBCB8B}.editor-dark .token.bold,.editor-dark .token.important{font-weight:bold}.editor-dark .token.italic{font-style:italic}.editor-dark .token.entity{cursor:help}
+
 </style>
 
 <script>
 const consola = require('consola')
 import axios from 'axios'
-import { CodeJar } from 'codejar'
-import Prism from 'prismjs';
-import { withLineNumbers } from 'codejar/linenumbers'
+import { PrismEditor } from 'vue-prism-editor'
+import 'vue-prism-editor/dist/prismeditor.min.css'
+import { highlight, languages } from 'prismjs/components/prism-core'
+import 'prismjs/components/prism-clike'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-css';
 
 export default {
 
+  // ========== COMPONENTS
+  components: {
+    PrismEditor
+  },
+
+  // ========== PROPS
   props: [
     'displayLineNums',
-    'snippContent'
+    'snippContent',
+    'readOnly',
+    'darkTheme'
   ],
 
+  // ========== WATCH
   watch: {
-    displayLineNums: function () {
-      this.createJar()
-    },
     snippContent: function () {
       this.setCode(this.b64_to_utf8(this.snippContent))
     }
@@ -32,7 +71,7 @@ export default {
   // ========== DATA
   data() {
       return {
-          codeJar: null,
+          code: 'console.log("Hello World");\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' // TODO: Fix / Implement pretty
       }
   },
 
@@ -41,25 +80,15 @@ export default {
   mounted() {
 
     // Create Flask.
-    this.createJar()
-    this.setCode(this.b64_to_utf8(this.snippContent))
+    //this.setCode(this.b64_to_utf8(this.snippContent))
 
   },
 
   // ========== COMPUTED
   computed: {
 
-      // CodeJar content
-      content() { return this.codeJar.toString()},
-
-      // Returns whether to display line numbers.
-      /*displayLineNums() {
-          if (typeof(Storage) !== "undefined") {
-              if (!localStorage.hasOwnProperty('displayLineNums')) localStorage.setItem('displayLineNums', false)
-              return JSON.parse(localStorage.getItem('displayLineNums'))
-          }
-          else return true;
-      },*/
+      // Editor content
+      editorContent() { return this.$refs.editor.content },
 
   },
 
@@ -67,14 +96,18 @@ export default {
   // ========== METHODS
   methods: {
 
+    highlighter(code) {
+      return highlight(code, languages.js); // languages.<insert language> to return html with markup
+    },
+
     createJar() {
-      if (this.displayLineNums) this.$data.codeJar = CodeJar(document.getElementById('editor'), withLineNumbers(Prism.highlightElement), {})
-      else this.$data.codeJar = CodeJar(document.getElementById('editor'), Prism.highlightElement)
+      //if (this.displayLineNums) this.$data.codeJar = CodeJar(document.getElementById('editor'), withLineNumbers(Prism.highlightElement), {})
+      //else this.$data.codeJar = CodeJar(document.getElementById('editor'), Prism.highlightElement)
     },
     
     // Sets the contents.
     setCode(text) {
-      this.$data.codeJar.updateCode(text)
+      //this.$data.codeJar.updateCode(text)
     },
 
     // Force update

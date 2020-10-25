@@ -16,12 +16,13 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
-    "codejar": "^3.2.2",
     "consola": "^2.15.0",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-buefy": "^0.4.3",
-    "prismjs": "^1.22.0"
+    "prism-themes": "https://github.com/PrismJS/prism-themes",
+    "prismjs": "^1.22.0",
+    "vue-prism-editor": "^1.2.2"
   },
   "devDependencies": {}
 }
