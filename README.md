@@ -41,6 +41,8 @@
 </p>
 
 
+![Banner GIF][snipp-bannergif]
+
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -178,7 +180,7 @@ Project Link: [https://github.com/MaximilianHeidenreich/Snipp](https://github.co
 [issues-url]: https://github.com/MaximilianHeidenreich/Snipp-api/issues
 [license-shield]: https://img.shields.io/github/license/MaximilianHeidenreich/Snipp?style=flat-square
 [license-url]: https://github.com/MaximilianHeidenreich/Snipp/blob/master/LICENSE.md
-[product-screenshot]: images/screenshot.png
+[snipp-bannergif]: https://i.imgur.com/jqubQoU.gif
 
 # Snipp
 
