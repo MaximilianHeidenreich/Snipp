@@ -2,11 +2,11 @@
     <section class="section">
         <!-- Title -->
         <div class="container mb-4">
-        <h1 class="title">
-            <b-icon icon="content-cut" size="is-large"> </b-icon>
-            Snipp
-        </h1>
-        <h2 class="subtitle">A clean way to share various snippets.</h2>
+            <h1 class="title">
+                <b-icon icon="content-cut" size="is-large"> </b-icon>
+                Snipp
+            </h1>
+            <h2 class="subtitle">A clean way to share various snippets.</h2>
         </div>
 
         <!-- MenuBar -->
@@ -26,7 +26,7 @@
             :displayLineNums="displayLineNums"
             :ownerPin="ownerPin"
             readOnly="false"
-            :snippContent="decodedContent"
+            :snippContent="snippContent"
             :darkTheme="darkTheme"
         />
     </section>
@@ -56,6 +56,13 @@ export default {
             // Config
             displayLineNums: this.displayLineNumsStorage
 
+        }
+    },
+
+    // ========== WATCH
+    watch: {
+        snippContent: function () {
+            this.$refs.codeEditor.code = this.b64_to_utf8(this.snippContent)
         }
     },
 
