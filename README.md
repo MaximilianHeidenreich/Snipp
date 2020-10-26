@@ -95,26 +95,41 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+Please ensure that you have installed & configured all of the following requirements:
+* [npm](https://npme.npmjs.com/docs/cli/installation.html) / [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+* [PostgreSQL Database](https://www.postgresql.org/docs/13/installation.html)
+* [Snipp API](https://github.com/MaximilianHeidenreich/Snipp-api)
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Create a .env file containing your frontend & [API](https://github.com/MaximilianHeidenreich/Snipp-api) URL
+```sh
+BASE_URL="http://localhost:3000"
+API_BASE_URL="http://localhost:5000"
+```
 2. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/MaximilianHeidenreich/Snipp.git
 ```
-3. Install NPM packages
+3. Install NPM/Yarn packages
 ```sh
 npm install
+
+or
+
+yarn install
 ```
-4. Enter your API in `config.js`
+4. Create the required database table (TODO: Move to API docs).
 ```JS
 const API_KEY = 'ENTER YOUR API';
+```
+5. Start the server
+```sh
+npm start
+
+or
+
+yarn start
 ```
 
 
@@ -163,25 +178,6 @@ Maximilian Heidenreich - github@maximilian-heidenreich.de
 Project Link: [https://github.com/MaximilianHeidenreich/Snipp](https://github.com/MaximilianHeidenreich/Snipp)
 
 
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/MaximilianHeidenreich/Snipp.svg?style=flat-square
-[contributors-url]: https://github.com/MaximilianHeidenreich/Snipp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/MaximilianHeidenreich/Snipp
-[forks-url]: https://github.com/MaximilianHeidenreich/Snipp/network
-[stars-shield]: https://img.shields.io/github/stars/MaximilianHeidenreich/Snipp
-[stars-url]: https://github.com/MaximilianHeidenreich/Snipp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/MaximilianHeidenreich/Snipp?style=flat-square
-[issues-url]: https://github.com/MaximilianHeidenreich/Snipp-api/issues
-[license-shield]: https://img.shields.io/github/license/MaximilianHeidenreich/Snipp?style=flat-square
-[license-url]: https://github.com/MaximilianHeidenreich/Snipp/blob/master/LICENSE.md
-[snipp-bannergif]: https://i.imgur.com/jqubQoU.gif
-
 # Snipp
 
 ## Build Setup
@@ -197,8 +193,21 @@ $ yarn dev
 $ yarn build
 $ yarn start
 
-# generate static project
-$ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/MaximilianHeidenreich/Snipp.svg?style=flat-square
+[contributors-url]: https://github.com/MaximilianHeidenreich/Snipp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/MaximilianHeidenreich/Snipp
+[forks-url]: https://github.com/MaximilianHeidenreich/Snipp/network
+[stars-shield]: https://img.shields.io/github/stars/MaximilianHeidenreich/Snipp
+[stars-url]: https://github.com/MaximilianHeidenreich/Snipp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/MaximilianHeidenreich/Snipp?style=flat-square
+[issues-url]: https://github.com/MaximilianHeidenreich/Snipp-api/issues
+[license-shield]: https://img.shields.io/github/license/MaximilianHeidenreich/Snipp?style=flat-square
+[license-url]: https://github.com/MaximilianHeidenreich/Snipp/blob/master/LICENSE.md
+[snipp-bannergif]: https://i.imgur.com/jqubQoU.gif
