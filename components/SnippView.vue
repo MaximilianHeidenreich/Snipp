@@ -112,7 +112,7 @@ export default {
             consola.info(`Fetching Snipp data (${this.$route.params.snippID})...`)
 
             const result = await axios.get(
-                'https://snipp-api.herokuapp.com/v1/snipp/' + this.$route.params.snippID
+                `${process.env.apiBaseUrl}/v1/snipp/${this.$route.params.snippID}`
             )
 
             if (result.status === 200) {
@@ -166,8 +166,8 @@ export default {
             // Create
             if (!this.$data.snippID) {
                 consola.info('Creating Snipp...')
-
-                axios.post('https://snipp-api.herokuapp.com/v1/snipp', {
+                
+                axios.post(`${process.env.apiBaseUrl}/v1/snipp/`, {
                     name: this.$data.snippName,
                     lang: this.$data.snippLang,
                     ownerPin: this.ownerPin,
@@ -212,7 +212,7 @@ export default {
             else {
                 consola.info(`Updating Snipp (PIN: ${this.ownerPin})...`)
 
-                axios.post('https://snipp-api.herokuapp.com/v1/snipp/' + this.$data.snippID, {
+                axios.post(`${process.env.apiBaseUrl}/v1/snipp/${this.$data.snippID}`, {
                     name: this.$data.snippName,
                     lang: this.$data.snippLang,
                     ownerPin: this.ownerPin,
@@ -290,7 +290,7 @@ export default {
         // Copies sharable link to clipboard.
         copyShareLinkToClipboard() {
             try {
-                this.copyToClipboard(`https://snipp.site/${this.$data.snippID}`)
+                this.copyToClipboard(`${process.env.baseUrl}/${this.$data.snippID}`)
             }
             catch (err) {
                 consola.error('Could not copy link to clipboard!')
