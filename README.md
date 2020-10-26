@@ -21,7 +21,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/MaximilianHeidenreich/Snipp">
-    <img src="https://via.placeholder.com/150" alt="Logo" width="80" height="80">
+    <img src="https://www.flaticon.com/svg/static/icons/svg/3587/3587746.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h2 align="center">Snipp</h2>
@@ -32,7 +32,7 @@
     <a href="https://github.com/MaximilianHeidenreich/Snipp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://snipp-psi.vercel.app/">View Demo</a>
+    <a href="https://snipp-demo.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/MaximilianHeidenreich/Snipp/issues">Report Bug</a>
     ·
