@@ -1,6 +1,12 @@
 <template>
   <section class="section">
-    <prism-editor
+    <div class="loading-skeleton" v-if="loading">
+      <b-skeleton width="10%" animated="animated"></b-skeleton>
+      <b-skeleton width="40%" animated="animated"></b-skeleton>
+      <b-skeleton width="20%" animated="animated"></b-skeleton>
+      <b-skeleton width="50%" animated="animated"></b-skeleton>
+    </div>
+    <prism-editor v-else
       ref="editor"
       v-bind:class="['snipp-editor', darkTheme ? 'editor-dark' : 'editor-light']"
       v-model="code"
@@ -12,6 +18,10 @@
 </template>
 
 <style>
+.loading-skeleton {
+  min-height: 65vh;
+}
+
 /* Editor Style */
 .snipp-editor {
   /*background: #2d2d2d;
@@ -58,10 +68,12 @@ export default {
 
   // ========== PROPS
   props: [
+    'loading',
+    'darkTheme',
+
     'displayLineNums',
     'snippContent',
-    'readOnly',
-    'darkTheme'
+    'readOnly'
   ],
 
   // ========== WATCH

@@ -23,6 +23,7 @@
         <CodeEditor
             ref="codeEditor"
             
+            :loading="loading"
             :displayLineNums="displayLineNums"
             readOnly="false"
             :darkTheme="darkTheme"
@@ -57,7 +58,7 @@ export default {
             displayLineNums: false,
 
             // Util.
-            loader: null
+            loading: true
 
         }
     },
@@ -124,7 +125,7 @@ export default {
                 this.$data.snippLang = result.data.data.lang
                 this.$data.snippContent = result.data.data.content
 
-                this.loader.close()
+                this.$data.loading = false
 
             }
             else {
@@ -143,7 +144,7 @@ export default {
 
         // Empty editor.
         else {
-            this.loader.close()
+            this.$data.loading = false
         }
 
     },
@@ -158,8 +159,7 @@ export default {
     },
 
     created() {
-        // Display loader.
-        this.loader = this.$buefy.loading.open({})
+        // Foo
     },
 
     // ========== METHODS
