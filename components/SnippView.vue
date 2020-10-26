@@ -18,6 +18,7 @@
 
             :snippName="snippName"
         />
+        <b-button class="is-primary">shag</b-button>
 
         <!-- CodeEditor -->
         <CodeEditor
@@ -34,7 +35,9 @@
 </template>
 
 <style>
-/* CSS */
+body {
+    /*font-family: nudista-web;*/
+}
 </style>
 
 <script>

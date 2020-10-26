@@ -1,0 +1,12 @@
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+@import url("https://use.typekit.net/qvo2mpr.css");
+
+/* Overrides goes between here... */
+$family-sans-serif: nudista-web, BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+
+/* ... and here */
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

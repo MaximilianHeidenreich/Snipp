@@ -19,10 +19,12 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "consola": "^2.15.0",
     "core-js": "^3.6.5",
+    "node-sass": "^4.14.1",
     "nuxt": "^2.14.6",
     "nuxt-buefy": "^0.4.3",
     "prism-themes": "https://github.com/PrismJS/prism-themes",
     "prismjs": "^1.22.0",
+    "sass-loader": "^10.0.4",
     "vue-prism-editor": "^1.2.2"
   },
   "devDependencies": {}
