@@ -142,7 +142,9 @@ export default {
         }
 
         // Empty editor.
-        else {}
+        else {
+            this.loader.close()
+        }
 
     },
     fetchOnServer: false,
