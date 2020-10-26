@@ -18,7 +18,6 @@
 
             :snippName="snippName"
         />
-        <b-button class="is-primary">shag</b-button>
 
         <!-- CodeEditor -->
         <CodeEditor
