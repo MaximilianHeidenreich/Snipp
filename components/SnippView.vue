@@ -54,7 +54,10 @@ export default {
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
             // Config
-            displayLineNums: this.displayLineNumsStorage
+            displayLineNums: this.displayLineNumsStorage,
+
+            // Util.
+            loader: null
 
         }
     },
@@ -121,10 +124,19 @@ export default {
                 this.$data.snippLang = result.data.data.lang
                 this.$data.snippContent = result.data.data.content
 
+                this.loader.close()
+
             }
             else {
                 consola.error('Error fetching data!')
                 console.log(result)
+
+                Toast.open({
+                    duration: 10000,
+                    message: `Snipp could not be loaded!`,
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                })
             }
 
         }
@@ -134,6 +146,14 @@ export default {
 
     },
     fetchOnServer: false,
+
+    // ========== HOOKS
+    mounted() {
+
+        // Display loader.
+        this.loader = this.$buefy.loading.open({})
+
+    },
 
     // ========== METHODS
     methods: {
