@@ -202,9 +202,9 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/MaximilianHeidenreich/Snipp.svg?style=flat-square
 [contributors-url]: https://github.com/MaximilianHeidenreich/Snipp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/MaximilianHeidenreich/Snipp
+[forks-shield]: https://img.shields.io/github/forks/MaximilianHeidenreich/Snipp?style=flat-square
 [forks-url]: https://github.com/MaximilianHeidenreich/Snipp/network
-[stars-shield]: https://img.shields.io/github/stars/MaximilianHeidenreich/Snipp
+[stars-shield]: https://img.shields.io/github/stars/MaximilianHeidenreich/Snipp?style=flat-square
 [stars-url]: https://github.com/MaximilianHeidenreich/Snipp/stargazers
 [issues-shield]: https://img.shields.io/github/issues/MaximilianHeidenreich/Snipp?style=flat-square
 [issues-url]: https://github.com/MaximilianHeidenreich/Snipp-api/issues
