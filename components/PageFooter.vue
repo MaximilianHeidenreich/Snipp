@@ -1,0 +1,24 @@
+<template>
+  <footer class="footer has-background-white">
+    <div class="content has-text-centered has-text-grey-light">
+      <p>
+        <strong class="has-text-grey">Snipp</strong> by
+        <a href="https://github.com/MaximilianHeidenreich" target="_blank">Maximilian Heidenreich</a>. 
+        The source code is licensed <a href="https://choosealicense.com/licenses/gpl-3.0/" target="_blank">GPLv3</a>.
+      </p>
+    </div>
+  </footer>
+</template>
+
+<style>
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+}
+</style>
+
+<script>
+/* JS */
+</script>

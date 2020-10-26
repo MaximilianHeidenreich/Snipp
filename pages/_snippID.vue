@@ -1,3 +1,6 @@
 <template>
-   <SnippView />
+   <div>
+    <SnippView />
+    <PageFooter />
+  </div>
 </template>

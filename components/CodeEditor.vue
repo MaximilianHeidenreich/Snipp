@@ -26,6 +26,9 @@
 .prism-editor__textarea:focus {
   outline: none;
 }
+.prism-editor__editor {
+  min-height: 65vh;
+}
 
 /* Light Theme */
 .editor-light code[class*="language-"],.editor-light pre[class*="language-"]{text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;color:#90a4ae;background:#fafafa;font-family:Roboto Mono, monospace;font-size:1em;line-height:1.5em;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}.editor-light code[class*="language-"]::-moz-selection,.editor-light pre[class*="language-"]::-moz-selection,.editor-light code[class*="language-"] ::-moz-selection,.editor-light pre[class*="language-"] ::-moz-selection{background:#cceae7;color:#263238}.editor-light code[class*="language-"]::selection,.editor-light pre[class*="language-"]::selection,.editor-light code[class*="language-"] ::selection,.editor-light pre[class*="language-"] ::selection{background:#cceae7;color:#263238}.editor-light:not(pre) > code[class*="language-"]{white-space:normal;border-radius:0.2em;padding:0.1em}.editor-light pre[class*="language-"]{overflow:auto;position:relative;margin:0.5em 0;padding:1.25em 1em}.editor-light .language-css > code,.editor-light .language-sass > code,.editor-light .language-scss > code{color:#f76d47}.editor-light [class*="language-"] .namespace{opacity:0.7}.editor-light .token.atrule{color:#7c4dff}.editor-light .token.attr-name{color:#39adb5}.editor-light .token.attr-value{color:#f6a434}.editor-light .token.attribute{color:#f6a434}.editor-light .token.boolean{color:#7c4dff}.editor-light .token.builtin{color:#39adb5}.editor-light .token.cdata{color:#39adb5}.editor-light .token.char{color:#39adb5}.editor-light .token.class{color:#39adb5}.editor-light .token.class-name{color:#6182b8}.editor-light .token.comment{color:#aabfc9}.editor-light .token.constant{color:#7c4dff}.editor-light .token.deleted{color:#e53935}.editor-light .token.doctype{color:#aabfc9}.editor-light .token.entity{color:#e53935}.editor-light .token.function{color:#7c4dff}.editor-light .token.hexcode{color:#f76d47}.editor-light .token.id{color:#7c4dff;font-weight:bold}.editor-light .token.important{color:#7c4dff;font-weight:bold}.editor-light .token.inserted{color:#39adb5}.editor-light .token.keyword{color:#7c4dff}.editor-light .token.number{color:#f76d47}.editor-light .token.operator{color:#39adb5}.editor-light .token.prolog{color:#aabfc9}.editor-light .token.property{color:#39adb5}.editor-light .token.pseudo-class{color:#f6a434}.editor-light .token.pseudo-element{color:#f6a434}.editor-light .token.punctuation{color:#39adb5}.editor-light .token.regex{color:#6182b8}.editor-light .token.selector{color:#e53935}.editor-light .token.string{color:#f6a434}.editor-light .token.symbol{color:#7c4dff}.editor-light .token.tag{color:#e53935}.editor-light .token.unit{color:#f76d47}.editor-light .token.url{color:#e53935}.editor-light .token.variable{color:#e53935}
@@ -71,7 +74,7 @@ export default {
   // ========== DATA
   data() {
       return {
-          code: 'console.log("Hello World");\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' // TODO: Fix / Implement pretty
+          code: 'console.log("Hello World");' // TODO: Fix / Implement pretty
       }
   },
 
