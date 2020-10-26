@@ -54,7 +54,10 @@ export default {
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
             // Config
-            displayLineNums: this.displayLineNumsStorage
+            displayLineNums: this.displayLineNumsStorage,
+
+            // Util.
+            loader: null
 
         }
     },
@@ -62,7 +65,7 @@ export default {
     // ========== WATCH
     watch: {
         snippContent: function () {
-            this.$refs.codeEditor.code = this.b64_to_utf8(this.snippContent)
+            this.$refs.codeEditor.setCode() // = this.b64_to_utf8(this.snippContent)
         }
     },
 
@@ -109,7 +112,7 @@ export default {
             consola.info(`Fetching Snipp data (${this.$route.params.snippID})...`)
 
             const result = await axios.get(
-                'https://snipp-api.herokuapp.com/v1/snipp/' + this.$route.params.snippID
+                `${process.env.apiBaseUrl}/v1/snipp/${this.$route.params.snippID}`
             )
 
             if (result.status === 200) {
@@ -121,10 +124,19 @@ export default {
                 this.$data.snippLang = result.data.data.lang
                 this.$data.snippContent = result.data.data.content
 
+                this.loader.close()
+
             }
             else {
                 consola.error('Error fetching data!')
                 console.log(result)
+
+                Toast.open({
+                    duration: 10000,
+                    message: `Snipp could not be loaded!`,
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                })
             }
 
         }
@@ -134,6 +146,14 @@ export default {
 
     },
     fetchOnServer: false,
+
+    // ========== HOOKS
+    mounted() {
+
+        // Display loader.
+        this.loader = this.$buefy.loading.open({})
+
+    },
 
     // ========== METHODS
     methods: {
@@ -146,8 +166,8 @@ export default {
             // Create
             if (!this.$data.snippID) {
                 consola.info('Creating Snipp...')
-
-                axios.post('https://snipp-api.herokuapp.com/v1/snipp', {
+                
+                axios.post(`${process.env.apiBaseUrl}/v1/snipp/`, {
                     name: this.$data.snippName,
                     lang: this.$data.snippLang,
                     ownerPin: this.ownerPin,
@@ -192,7 +212,7 @@ export default {
             else {
                 consola.info(`Updating Snipp (PIN: ${this.ownerPin})...`)
 
-                axios.post('https://snipp-api.herokuapp.com/v1/snipp/' + this.$data.snippID, {
+                axios.post(`${process.env.apiBaseUrl}/v1/snipp/${this.$data.snippID}`, {
                     name: this.$data.snippName,
                     lang: this.$data.snippLang,
                     ownerPin: this.ownerPin,
@@ -270,7 +290,7 @@ export default {
         // Copies sharable link to clipboard.
         copyShareLinkToClipboard() {
             try {
-                this.copyToClipboard(`https://snipp.site/${this.$data.snippID}`)
+                this.copyToClipboard(`${process.env.baseUrl}/${this.$data.snippID}`)
             }
             catch (err) {
                 consola.error('Could not copy link to clipboard!')
