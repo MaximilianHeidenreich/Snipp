@@ -32,7 +32,7 @@
     <a href="https://github.com/MaximilianHeidenreich/Snipp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://snipp.maximilian-heidenreich.de">View Demo</a>
+    <a href="https://snipp-psi.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/MaximilianHeidenreich/Snipp/issues">Report Bug</a>
     ·
