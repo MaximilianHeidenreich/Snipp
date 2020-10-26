@@ -1,3 +1,4 @@
+import { version } from './package.json';
 export default {
 
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
@@ -59,6 +60,8 @@ export default {
 
   // Env configuration
   env: {
+    appVersion: version,
+    
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:5000'
   }
