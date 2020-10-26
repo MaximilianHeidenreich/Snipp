@@ -193,7 +193,7 @@ export default {
                         console.log(response)
                         that.$router.push({ path: `/${response.data.data.snippID}` })
 
-                        that.copyShareLinkToClipboard()
+                        that.copyShareLinkToClipboard(response.data.data.snippID)
 
                         Toast.open({
                             duration: 3000,
@@ -307,7 +307,7 @@ export default {
                 this.copyToClipboard(this.rawEditorContent)
                 Toast.open({
                     duration: 3000,
-                    message: `Content copied to clipboard!`,
+                    message: `📋 &nbsp; Content copied to clipboard!`,
                     position: 'is-bottom',
                     type: 'is-info'
                 })
@@ -325,9 +325,9 @@ export default {
         },
 
         // Copies sharable link to clipboard.
-        copyShareLinkToClipboard() {
+        copyShareLinkToClipboard(snippID) {
             try {
-                this.copyToClipboard(`${process.env.baseUrl}/${this.$data.snippID}`)
+                this.copyToClipboard(`${process.env.baseUrl}/${snippID}`)
             }
             catch (err) {
                 consola.error('Could not copy link to clipboard!')
