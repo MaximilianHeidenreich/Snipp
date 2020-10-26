@@ -58,7 +58,8 @@ export default {
             displayLineNums: false,
 
             // Util.
-            loading: true
+            loading: true,
+            busy: false
 
         }
     },
@@ -168,11 +169,15 @@ export default {
         // Creates / Updates Snipp.
         pushSnipp() {
             const that = this;
-            console.log(this.$data)
+            
+            // RET: Busy
+            if (this.$data.busy) return
 
             // Create
             if (!this.$data.snippID) {
                 consola.info('Creating Snipp...')
+
+                this.$data.busy = true
                 
                 axios.post(`${process.env.apiBaseUrl}/v1/snipp/`, {
                     name: this.$data.snippName,
@@ -191,15 +196,24 @@ export default {
 
                         Toast.open({
                             duration: 3000,
-                            message: `Snipp has been created! The link has been copied to your clipboard!`,
+                            message: `👍 &nbsp; Link copied to clipboard!`,
                             position: 'is-bottom',
-                            type: 'is-success'
+                            type: 'is-info'
                         })
                     }
                     else {
                         consola.error('None 200 Status Code!')
                         consola.error(response)
+
+                        Toast.open({
+                            duration: 3000,
+                            message: `😬 &nbsp; Snipp could not be created: No 200 Code received!`,
+                            position: 'is-bottom',
+                            type: 'is-danger'
+                        })
                     }
+
+                    that.$data.busy = false
 
                 })
                 .catch(function (error) {
@@ -207,10 +221,12 @@ export default {
 
                     Toast.open({
                         duration: 3000,
-                        message: `Snipp could not be created: Request error!`,
+                        message: `😬 &nbsp; Snipp could not be created: Request error!`,
                         position: 'is-bottom',
                         type: 'is-danger'
                     })
+
+                    that.$data.busy = false
 
                 });
             }
@@ -218,6 +234,8 @@ export default {
             // Update
             else {
                 consola.info(`Updating Snipp (PIN: ${this.ownerPin})...`)
+
+                this.$data.busy = true
 
                 axios.post(`${process.env.apiBaseUrl}/v1/snipp/${this.$data.snippID}`, {
                     name: this.$data.snippName,
@@ -231,7 +249,7 @@ export default {
 
                         Toast.open({
                             duration: 3000,
-                            message: `Snipp has been updated!`,
+                            message: `👍 &nbsp; Snipp has been updated!`,
                             position: 'is-bottom',
                             type: 'is-success'
                         })
@@ -243,7 +261,7 @@ export default {
 
                         Toast.open({
                             duration: 3000,
-                            message: `Snipp could not be updated: Incorrect PIN`,
+                            message: `😬 &nbsp; Snipp could not be updated: Incorrect PIN`,
                             position: 'is-bottom',
                             type: 'is-danger'
                         })
@@ -252,7 +270,16 @@ export default {
                     else {
                         consola.error('None 200 Status Code!')
                         consola.error(response)
+
+                        Toast.open({
+                            duration: 3000,
+                            message: `😬 &nbsp; Snipp could not be created: No 200 Code received!`,
+                            position: 'is-bottom',
+                            type: 'is-danger'
+                        })
                     }
+
+                    that.$data.busy = false
 
                 })
                 .catch(function (error) {
@@ -260,10 +287,12 @@ export default {
 
                     Toast.open({
                         duration: 3000,
-                        message: `Snipp could not be updated: Request error`,
+                        message: `😬 &nbsp; Snipp could not be updated: Request error`,
                         position: 'is-bottom',
                         type: 'is-danger'
                     })
+
+                    that.$data.busy = false
 
                 });
 
