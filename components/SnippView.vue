@@ -121,7 +121,7 @@ export default {
                 consola.success('Snipp data received!')
 
                 // Update data.
-                this.$data.snippID = result.data.data.ID
+                this.$data.snippID = this.$route.params.snippID
                 this.$data.snippName = result.data.data.name
                 this.$data.snippLang = result.data.data.lang
                 this.$data.snippContent = result.data.data.content
@@ -189,7 +189,6 @@ export default {
                     if (response.status === 200) {
                         consola.success(`Created Snipp (${response.data.data.snippID})`)
                         console.log(response)
-                        that.$data.snippID = response.data.data.snippID
                         that.$router.push({ path: `/${response.data.data.snippID}` })
 
                         that.copyShareLinkToClipboard()
