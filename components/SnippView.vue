@@ -6,7 +6,7 @@
                 <b-icon icon="content-cut" size="is-large"> </b-icon>
                 Snipp
             </h1>
-            <h2 class="subtitle">A clean way to share various snippets.</h2>
+            <h2 class="subtitle is-6">A clean way to share various snippets.</h2>
         </div>
 
         <!-- MenuBar -->
