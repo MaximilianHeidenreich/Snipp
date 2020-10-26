@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section editor-section">
     <div class="loading-skeleton" v-if="loading">
       <b-skeleton width="10%" animated="animated"></b-skeleton>
       <b-skeleton width="40%" animated="animated"></b-skeleton>
@@ -18,6 +18,12 @@
 </template>
 
 <style>
+.editor-section {
+  padding: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 0.5rem;
+}
 .loading-skeleton {
   min-height: 65vh;
 }
