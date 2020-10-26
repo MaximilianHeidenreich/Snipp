@@ -1,99 +1,58 @@
 <template>
-  <nav class="navbar is-transparent">
-    <div class="navbar-brand">
-      <div class="navbar-burger burger" data-target="menuBar">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-    <div id="menuBar" class="navbar-menu">
-      <div class="navbar-start">
+  <b-navbar class="is-transparent">
+    <template slot="start">
 
         <!-- New -->
-        <a class="navbar-item" v-on:click="$emit('navigate-new', {})">
-          <span class="icon">
-            <i class="mdi mdi-plus-box"></i>
-          </span>
-        </a>
+        <b-navbar-item v-on:click="$emit('navigate-new', {})">
+            <span class="icon">
+              <i class="mdi mdi-plus-box"></i>
+            </span>
+        </b-navbar-item>
+        
+         <!-- Clone -->
+        <b-navbar-item>
+            <span class="icon">
+              <i class="mdi mdi-content-duplicate"></i>
+            </span>
+        </b-navbar-item>
 
-        <!-- Clone -->
-        <a class="navbar-item">
-          <span class="icon">
-            <i class="mdi mdi-content-duplicate"></i>
-          </span>
-        </a>
+         <!-- Name -->
+        <b-navbar-item>
+            <b-field>
+              <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false" :readonly="readOnly"/>
+            </b-field>
+        </b-navbar-item>
 
-        <!-- Name -->
-        <a class="navbar-item">
-          <b-field>
-            <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false" :readonly="readOnly"/>
-          </b-field>
-        </a>
+         <!-- Save -->
+        <b-navbar-item v-on:click="$emit('push-snipp', {})">
+            <span class="icon">
+              <i class="mdi mdi-content-save"></i>
+            </span>
+        </b-navbar-item>
 
-        <!-- Save -->
-        <a class="navbar-item" v-on:click="$emit('push-snipp', {})">
-          <span class="icon">
-            <i class="mdi mdi-content-save"></i>
-          </span>
-        </a>
-
-
-        <!--<div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
-            Docs
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-              Overview
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-              Modifiers
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-              Columns
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-              Layout
-            </a>
-            <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-              Form
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-              Elements
-            </a>
-            <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-              Components
-            </a>
-          </div>
-        </div>-->
-
-      </div>
-
-      <div class="navbar-end">
-
+    </template>
+    <template slot="end">
+        
         <!-- Toggle Lines -->
-        <a class="navbar-item" v-on:click="$emit('toggle-linenums', {})">
-          <span class="icon">
-            <i class="mdi mdi-format-list-numbered"></i>
-          </span>
-        </a>
+        <b-navbar-item v-on:click="$emit('toggle-linenums', {})">
+            <span class="icon">
+              <i class="mdi mdi-format-list-numbered"></i>
+            </span>
+        </b-navbar-item>
 
         <!-- Copy to clip -->
-        <a class="navbar-item" v-on:click="$emit('copy-clipboard', {})">
-          <span class="icon">
-            <i class="mdi mdi-clipboard-multiple-outline"></i>
-          </span>
-        </a>
+        <b-navbar-item v-on:click="$emit('copy-clipboard', {})">
+            <span class="icon">
+              <i class="mdi mdi-clipboard-multiple-outline"></i>
+            </span>
+        </b-navbar-item>
 
         <!-- Settings -->
-        <a class="navbar-item">
-          <span class="icon">
-            <i class="mdi mdi-cog"></i>
-          </span>
-        </a>
+        <b-navbar-item>
+            <span class="icon">
+              <i class="mdi mdi-cog"></i>
+            </span>
+        </b-navbar-item>
 
         <!-- Search -->
         <!--<div class="navbar-item">
@@ -125,9 +84,9 @@
             </b-autocomplete>
           </b-field>
         </div>-->
-      </div>
-    </div>
-  </nav>
+
+    </template>
+  </b-navbar>
 </template>
 
 <style>
