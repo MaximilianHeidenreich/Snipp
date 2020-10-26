@@ -28,7 +28,7 @@
         <!-- Name -->
         <a class="navbar-item">
           <b-field>
-            <b-input placeholder="Snippet name" :value="snippName" />
+            <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false"/>
           </b-field>
         </a>
 

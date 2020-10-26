@@ -12,8 +12,9 @@
         <!-- MenuBar -->
         <MenuBar
             @push-snipp="pushSnipp"
-            @navigate-new="navigateNew"
-            @toggle-linenums="toggleLineNums"
+            @navigate-new="onNavigateNew"
+            @change-name="onChangeSnippName"
+            @toggle-linenums="onToggleLineNums"
             @copy-clipboard="copyContentToClipboard"
 
             :snippName="snippName"
@@ -52,7 +53,7 @@ export default {
 
             // Snipp
             snippID: this.$route.params.snippID ? this.$route.params.snippID : null,
-            snippName: 'New Snipp',
+            snippName: '',
             snippLang: 'js',
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
@@ -342,14 +343,18 @@ export default {
         },
 
         // Navigate to /
-        navigateNew() {
+        onNavigateNew() {
             this.$router.push({ path: `/` })
         },
 
         // Toggles displaying line numbers.
-        toggleLineNums() {
+        onToggleLineNums() {
             localStorage.setItem('displayLineNums', !JSON.parse(localStorage.getItem('displayLineNums')))
             this.$data.displayLineNums = JSON.parse(localStorage.getItem('displayLineNums'))
+        },
+
+        onChangeSnippName(event) {
+            this.$data.snippName = event
         },
 
         // Clipboard helper.
