@@ -49,9 +49,89 @@
 
         <!-- Settings -->
         <b-navbar-item>
-            <span class="icon">
-              <i class="mdi mdi-cog"></i>
-            </span>
+          <div class="dropdown is-right">
+            <div class="dropdown-trigger">
+              <span class="icon" aria-haspopup="true" aria-controls="dropdown-menu">
+                <i class="mdi mdi-cog"></i>
+              </span>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu-settings" role="menu">
+              <div class="dropdown-content">
+                <div class="dropdown-item">
+                  <p><strong>Owner PIN</strong></p>
+                  <br>
+                  <div class="field is-horizontal">
+                    <div class="field-body">
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="mr-1 field">
+                        <div class="control">
+                          <button class="button button is-white " disabled><strong>-</strong></button>
+                        </div>
+                      </div>
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="mr-1 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                      <div class="ml-0 field">
+                        <p class="control">
+                          <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="dropdown-divider">
+                <div class="dropdown-item">
+                  <p><strong>Theme</strong></p>
+                  <br>
+                  <div class="field">
+                      <b-switch 
+                          v-model="darkMode"
+                          passive-type='is-light'
+                          type='is-dark'>
+                          {{ darkMode ? "Dark Mode" : "Light Mode" }}
+                      </b-switch>
+                  </div>
+                </div>
+                <hr class="dropdown-divider">
+                <div class="dropdown-item">
+                  <p><strong>About</strong></p>
+                  <br>
+                  <p>Version: <code>{{ version }}</code></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </b-navbar-item>
 
         <!-- Search -->
@@ -90,7 +170,23 @@
 </template>
 
 <style>
-/* CSS */
+
+/* PIN INPUT */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.pinTokenInput {
+  min-width: 33px;
+  border: none;
+}
+
 </style>
 
 <script>
@@ -98,6 +194,17 @@ export default {
   props: [
     'snippName',
     'readOnly',
-  ]
+  ],
+
+  mounted() {
+
+    // Enable dropdowns.
+    document.querySelector('.dropdown').addEventListener('click', function(event) {
+      event.stopPropagation()
+      document.querySelector('.dropdown').classList.toggle('is-active')
+    })
+
+  },
+
 }
 </script>

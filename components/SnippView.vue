@@ -17,8 +17,10 @@
             @toggle-linenums="onToggleLineNums"
             @copy-clipboard="copyContentToClipboard"
 
+            :version="appVersion"
             :snippName="snippName"
             :readOnly="readOnly"
+            :dark-mode="darkMode"
         />
 
         <!-- CodeEditor -->
@@ -60,11 +62,13 @@ export default {
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
             // Config
+            darkMode: false,
             displayLineNums: false,
 
             // Util.
             loading: true,
-            busy: false
+            busy: false,
+            appVersion: process.env.appVersion
 
         }
     },
