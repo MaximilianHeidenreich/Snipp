@@ -152,9 +152,13 @@ export default {
     // ========== HOOKS
     mounted() {
 
+        
+
+    },
+
+    created() {
         // Display loader.
         this.loader = this.$buefy.loading.open({})
-
     },
 
     // ========== METHODS
