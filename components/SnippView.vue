@@ -18,6 +18,7 @@
             @copy-clipboard="copyContentToClipboard"
 
             :snippName="snippName"
+            :readOnly="readOnly"
         />
 
         <!-- CodeEditor -->
@@ -26,7 +27,7 @@
             
             :loading="loading"
             :displayLineNums="displayLineNums"
-            readOnly="false"
+            :readOnly="readOnly"
             :darkTheme="darkTheme"
             :ownerPin="ownerPin"
             :snippContent="snippContent"
@@ -55,6 +56,7 @@ export default {
             snippID: this.$route.params.snippID ? this.$route.params.snippID : null,
             snippName: '',
             snippLang: 'js',
+            isOwner: true,
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
             // Config
@@ -98,6 +100,8 @@ export default {
             else return "0000-0000";
         },
 
+        readOnly() { return !this.$data.isOwner },
+
         // Whether to use dark theme.
         darkTheme() { return false },
 
@@ -117,7 +121,12 @@ export default {
             consola.info(`Fetching Snipp data (${this.$route.params.snippID})...`)
 
             const result = await axios.get(
-                `${process.env.apiBaseUrl}/v1/snipp/${this.$route.params.snippID}`
+                `${process.env.apiBaseUrl}/v1/snipp/${this.$route.params.snippID}`,
+                {
+                    headers: {
+                        'owner-pin': this.ownerPin
+                    }
+                }
             )
 
             if (result.status === 200) {
@@ -127,6 +136,7 @@ export default {
                 this.$data.snippID = this.$route.params.snippID
                 this.$data.snippName = result.data.data.name
                 this.$data.snippLang = result.data.data.lang
+                this.$data.isOwner = result.data.data.isOwner
                 this.$data.snippContent = result.data.data.content
 
                 this.$data.loading = false

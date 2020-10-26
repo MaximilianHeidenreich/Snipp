@@ -28,7 +28,7 @@
         <!-- Name -->
         <a class="navbar-item">
           <b-field>
-            <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false"/>
+            <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false" :readonly="readOnly"/>
           </b-field>
         </a>
 
@@ -136,6 +136,9 @@
 
 <script>
 export default {
-  props: ['snippName']
+  props: [
+    'snippName',
+    'readOnly',
+  ]
 }
 </script>

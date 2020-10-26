@@ -11,7 +11,7 @@
       v-bind:class="['snipp-editor', darkTheme ? 'editor-dark' : 'editor-light']"
       v-model="code"
       :highlight="highlighter"
-      :read-only="readOnly"
+      :readonly="readOnly"
       :line-numbers="displayLineNums"
     />
   </section>
@@ -80,7 +80,8 @@ export default {
   watch: {
     snippContent: function () {
       this.setCode(this.b64_to_utf8(this.snippContent))
-    }
+    },
+    readOnly: function () { console.log(this.readOnly) }
   },
 
   // ========== DATA
