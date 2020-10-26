@@ -21,7 +21,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/MaximilianHeidenreich/Snipp">
-    <img src="https://www.flaticon.com/svg/static/icons/svg/3587/3587746.svg" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/MaximilianHeidenreich/Snipp/master/assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h2 align="center">Snipp</h2>
