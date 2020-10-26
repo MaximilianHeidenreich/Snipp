@@ -24,10 +24,10 @@
             ref="codeEditor"
             
             :displayLineNums="displayLineNums"
-            :ownerPin="ownerPin"
             readOnly="false"
-            :snippContent="snippContent"
             :darkTheme="darkTheme"
+            :ownerPin="ownerPin"
+            :snippContent="snippContent"
         />
     </section>
 </template>
@@ -54,7 +54,7 @@ export default {
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
             // Config
-            displayLineNums: this.displayLineNumsStorage,
+            displayLineNums: false,
 
             // Util.
             loader: null
@@ -152,7 +152,8 @@ export default {
     // ========== HOOKS
     mounted() {
 
-        
+        // Load settings from storage
+        this.$data.displayLineNums = this.displayLineNumsStorage
 
     },
 
@@ -318,7 +319,7 @@ export default {
         // Toggles displaying line numbers.
         toggleLineNums() {
             localStorage.setItem('displayLineNums', !JSON.parse(localStorage.getItem('displayLineNums')))
-            this.$data.displayLineNums = !this.$data.displayLineNums
+            this.$data.displayLineNums = JSON.parse(localStorage.getItem('displayLineNums'))
         },
 
         // Clipboard helper.
