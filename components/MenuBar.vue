@@ -194,6 +194,8 @@ export default {
   props: [
     'snippName',
     'readOnly',
+    'darkMode',
+    'version'
   ],
 
   mounted() {
