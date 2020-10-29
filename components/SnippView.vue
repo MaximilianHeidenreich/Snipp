@@ -34,6 +34,9 @@
             :ownerPin="ownerPin"
             :snippContent="snippContent"
         />
+
+        <!-- Loader -->
+        <b-loading :is-full-page="true" v-model="busy" :can-cancel="false"></b-loading>
     </section>
 </template>
 
