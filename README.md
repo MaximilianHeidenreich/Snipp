@@ -32,7 +32,7 @@
     <a href="https://github.com/MaximilianHeidenreich/Snipp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://snipp-demo.vercel.app/">View Demo</a>
+    <a href="https://snipp.xyz">View Demo</a>
     ·
     <a href="https://github.com/MaximilianHeidenreich/Snipp/issues">Report Bug</a>
     ·
