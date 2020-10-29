@@ -12,10 +12,7 @@
 
 <style>
 .footer {
-  position: absolute;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
+  
 }
 </style>
 

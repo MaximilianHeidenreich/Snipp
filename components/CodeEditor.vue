@@ -21,7 +21,6 @@
 .editor-section {
   padding: 0;
   padding-top: 2rem;
-  padding-bottom: 2rem;
   padding-left: 0.5rem;
 }
 .loading-skeleton {
@@ -43,7 +42,7 @@
   outline: none;
 }
 .prism-editor__editor {
-  min-height: 65vh;
+  min-height: 50vh;
 }
 
 /* Light Theme */
