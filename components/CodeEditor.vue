@@ -32,7 +32,6 @@
   /*background: #2d2d2d;
   /*color: #ccc;*/
 
-  /* you must provide font-family font-size line-height. Example: */
   font-family: Fira code, Fira Mono, Consolas, Menlo, Courier, monospace;
   font-size: 14px;
   line-height: 1.5;
