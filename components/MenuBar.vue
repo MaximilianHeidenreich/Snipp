@@ -8,28 +8,28 @@
               <i class="mdi mdi-plus-box"></i>
             </span>
         </b-navbar-item>
-        
-         <!-- Clone -->
-        <b-navbar-item>
+
+        <!-- Clone -->
+        <b-navbar-item v-if="readOnly">
             <span class="icon">
               <i class="mdi mdi-content-duplicate"></i>
             </span>
         </b-navbar-item>
-
-         <!-- Name -->
-        <b-navbar-item>
-            <b-field>
-              <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false" :readonly="readOnly"/>
-            </b-field>
-        </b-navbar-item>
-
-         <!-- Save -->
-        <b-navbar-item v-on:click="$emit('push-snipp', {})">
+        
+        <!-- Save -->
+        <b-navbar-item v-else v-on:click="$emit('push-snipp', {})">
             <span class="icon">
               <i class="mdi mdi-content-save"></i>
             </span>
         </b-navbar-item>
 
+        <!-- Name -->
+        <b-navbar-item>
+            <b-field>
+              <b-input placeholder="Snippet name" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false" :readonly="readOnly"/>
+            </b-field>
+        </b-navbar-item>
+        
     </template>
     <template slot="end">
         
