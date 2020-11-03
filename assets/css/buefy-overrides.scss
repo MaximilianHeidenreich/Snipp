@@ -5,8 +5,25 @@
 /* Overrides goes between here... */
 $family-sans-serif: nudista-web, BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
+.prism-editor__editor {
+    .number {
+        align-content: unset;
+        background-color: unset;
+        border-radius: unset;
+        display: unset;
+        font-size: unset;
+        height: unset;
+        justify-content: unset;
+        margin-right: unset;
+        min-width: unset;
+        padding: unset;
+        text-align: unset;
+        vertical-align: unset;
+    }
+}
 
 /* ... and here */
 
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
