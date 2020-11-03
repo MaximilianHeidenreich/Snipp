@@ -28,5 +28,7 @@
     "sass-loader": "^10.0.4",
     "vue-prism-editor": "^1.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-plugin-prismjs": "^2.0.1"
+  }
 }
