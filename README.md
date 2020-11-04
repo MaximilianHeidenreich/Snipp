@@ -46,91 +46,99 @@
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
+- - - -
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
+  - [Features:](#features)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Local Installation](#local-installation)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+- - - -
 
-**! This project is still under development, I will be "finishing" it in a few days, which includes writing docs & guides. **
+***Are you tired of using pastebins which look like they were designed in the early 2000s?***
 
-Are you tired of using pastebins that are using old Bootstrap styles or look like their are from the early 2000s?
+***Fear not! Snipp got you covered.***
 
-If this is the case, you should try Snipp. Snipp aims to be a modern, minimalistic yet powerful pastebin tool.
+> Snipp is a powerful, user friendly pastebin tool with a modern aesthetic.
 
-Features include:
-- Create pastes ("snipps") globally accessible by short IDs (e.g. "EEmt6k")
-- Support for multiple languages
-- Syntax highlighting
-- Ability to toggle line numbers
-- A clean, modern UI
-- Light & Dark Theme
-- Clone pastes
-- Ability to edit pastes after saving them (if you created it) -> No login required
-- Simple API which can be used to extend Snipp (e.g. write custom cli tools)
-- Open-Source using GPL-3.0 license -> You can basically do whatever you want with it (See [License Info](https://choosealicense.com/licenses/gpl-3.0/) for further details about GPL-3.0)
+### Features:
 
-The project is split into 2 codebases. The "Snipp" repository includes the frontend (Nuxt.js & Vue).
-The "[Snipp-api](https://github.com/MaximilianHeidenreich/Snipp-api)" repository includes the API server (Express & PostgreSQL).
+- [x] **Create & Share** snippets accessible by short IDs (e.g. ""EEmt6k)
+- [x] **Edit** snippets after publishing them *(No login required!)*
+- [x] **Clone** pastes if you want to make changes to other peoples snippets
+- [x] Visual features
+  - [x] Clean & Modern UI
+  - [x] Syntax highlighting
+  - [ ] Light & Dark Theme
+  - [x] Line numbers *(togglable)*
 
-If you want to use the frontend, you will have to deploy the API server somewhere. You can either host it on your own server or easily deploy it on services like Heroku.
+- [x] Simple **API** *(Feel free to extend it. Maybe a CLI Tool?)*
+- [x] **Open Source** *(GPL-3.0, see [License info](https://choosealicense.com/licenses/gpl-3.0/) for further details)*
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
+- - - -
+
+> **:bulb:** The Snipp project is split into 2 codebases!
+> - [Snipp (Frontend)](https://github.com/MaximilianHeidenreich/Snipp)
+> - [Snipp-API (API)](https://github.com/MaximilianHeidenreich/Snipp-api)
+> 
+> The frontend only contains the Nuxt.js (Vue) project. It simply provides a clean ui to interface 
+> with the backend API. If you want to host Snipp yourself, please make sure you have an API instance 
+> running somewhere!
+
+
+
+<!--If you want to use the frontend, you will have to deploy the API server somewhere. You can either host it on your own server or easily deploy it on services like Heroku.
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps.-->
 
 ### Prerequisites
 
 Please ensure that you have installed & configured all of the following requirements:
-* [npm](https://npme.npmjs.com/docs/cli/installation.html) / [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-* [PostgreSQL Database](https://www.postgresql.org/docs/13/installation.html)
-* [Snipp API](https://github.com/MaximilianHeidenreich/Snipp-api)
+- [npm](https://npme.npmjs.com/docs/cli/installation.html) / [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+- [PostgreSQL Database](https://www.postgresql.org/docs/13/installation.html)
+- [Snipp API](https://github.com/MaximilianHeidenreich/Snipp-api)
 
-### Installation
+Before you launch the server or build the project, you need to configure the following ENV 
+variables inside the `.env` file:
 
-1. Create a .env file containing your frontend & [API](https://github.com/MaximilianHeidenreich/Snipp-api) URL
-```sh
-BASE_URL="http://localhost:3000"
-API_BASE_URL="http://localhost:5000"
+```bash
+# ! Do not append a '/' to the URLs !
+
+API_BASE_URL="https://yourApiUrl.com"   # The URL where the API is hosted / accessible. 
+
+BASE_URL="https://yourAccessUrl.com"    # The URL where Snipp frontend will be accessed from.
 ```
-2. Clone the repo
-```sh
-git clone https://github.com/MaximilianHeidenreich/Snipp.git
-```
-3. Install NPM/Yarn packages
-```sh
-npm install
 
-or
 
-yarn install
-```
-4. Create the required database table (TODO: Move to API docs).
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
-5. Start the server
-```sh
-npm start
+### Local Installation
 
-or
+```bash
+# install dependencies
+$ yarn install
 
-yarn start
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
 ```
+
+For detailed explanation on how Nuxt.js works, check out [Nuxt.js docs](https://nuxtjs.org).
 
 
 
@@ -145,6 +153,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 ## Roadmap
+- - - -
 
 See the [open issues](https://github.com/MaximilianHeidenreich/Snipp-api/issues) for a list of proposed features (and known issues).
 
@@ -152,6 +161,7 @@ See the [open issues](https://github.com/MaximilianHeidenreich/Snipp-api/issues)
 
 <!-- CONTRIBUTING -->
 ## Contributing
+- - - -
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -162,40 +172,16 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
-<!-- LICENSE -->
-## License
-
-Distributed under the GNU GPLv3 License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
+- - - -
 
 Maximilian Heidenreich - github@maximilian-heidenreich.de
 
 Project Link: [https://github.com/MaximilianHeidenreich/Snipp](https://github.com/MaximilianHeidenreich/Snipp)
 
 
-# Snipp
 
-## Build Setup
-
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
