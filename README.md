@@ -61,9 +61,10 @@
 
 
 
+<br></br>
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-- - - -
+
 
 ***Are you tired of using pastebins which look like they were designed in the early 2000s?***
 
@@ -86,9 +87,9 @@
 - [x] **Open Source** *(GPL-3.0, see [License info](https://choosealicense.com/licenses/gpl-3.0/) for further details)*
 
 
+<br></br>
 <!-- GETTING STARTED -->
 ## Getting Started
-- - - -
 
 > **:bulb:** The Snipp project is split into 2 codebases!
 > - [Snipp (Frontend)](https://github.com/MaximilianHeidenreich/Snipp)
@@ -141,27 +142,82 @@ $ yarn start
 For detailed explanation on how Nuxt.js works, check out [Nuxt.js docs](https://nuxtjs.org).
 
 
-
+<br></br>
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<br>
+<details>
+  <summary><b>Creating & Updating</b></summary>
+  <p>
+    To create a Snipp, simple click the '+' button and paste your text into the free editor space.
+    If you want, you can enter a name associated with the Snipp inside of the 'Name' field.
+    <br></br>
+    <i>💡 Snipp will automatically try to detect the language and select it for syntax highlighting.</i>
+    <br></br>
+    After you created your Snipp, you can always access it and make changes (See <i>Owner Pin</i> for further details). Just hit the 'save' button right next to the '+' button to pubish your changes.
+    <br></br>
+    <i>💡 When you create a Snipp, the url to access it will be copied to your clipboard!</i>
+  </p>
+</details>
+<br>
+<details>
+  <summary><b>Clone Snipp</b></summary>
+  <p>
+    If you come across a Snipp, which was created by someone else but you still want to edit it, 
+    you can use the 'clone' button (It replaces the 'save' button if you don't own the Snipp).
+    <br></br>
+    After cloning the Snipp, make your changes and hit the 'save' button. Now it will be yours :)
+    <br></br>
+    <i>💡 When you published your changes, the url to access the Snipp will be copied to your clipboard!</i>
+  </p>
+</details>
+<br>
+<details>
+  <summary><b>Owner Pin</b></summary>
+  <p>
+    The 'Owner Pin' is a 8-digit pin (0000-0000) which is used to identify a client.
+    <br></br>
+    Important notes:
+    <ul>
+      <li>
+        The owner pin is no secure identification token! It only provides a basic level of security 
+        to prevent everyone from editing every Snipp.
+      </li>
+      <li>
+        The owner pin is automatically generated when a client visits the Snipp frontend for the first time.
+      </li>
+      <li>
+        A client can change his PIN to whatever he wants (as long as it meets the format requirements).
+      </li>
+    </ul>
+    <br></br>
+    If you want to use the same PIN on multiple devices to enable editing access to your Snipps, 
+    just select the 'gear' icon on your main device. Remember the PIN which is displayed at the top 
+    and insert it into your other clients settings.
+  </p>
+</details>
+<br>
+<details>
+  <summary><b>Visual Configuration</b></summary>
+  <p>
+    // TODO: Add visual config docs.
+  </p>
+</details>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
-
-
+<br></br>
 <!-- ROADMAP -->
 ## Roadmap
-- - - -
+
 
 See the [open issues](https://github.com/MaximilianHeidenreich/Snipp-api/issues) for a list of proposed features (and known issues).
 
 
-
+<br></br>
 <!-- CONTRIBUTING -->
 ## Contributing
-- - - -
+
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -172,9 +228,10 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
+<br></br>
 <!-- CONTACT -->
 ## Contact
-- - - -
+
 
 Maximilian Heidenreich - github@maximilian-heidenreich.de
 
