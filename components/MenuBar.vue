@@ -12,7 +12,7 @@
       </b-navbar-item>
 
       <!-- Clone -->
-      <b-navbar-item v-if="readOnly">
+      <b-navbar-item v-if="readOnly" v-on:click="$emit('navigate-clone', {})">
         <b-tooltip label="Clone Snipp" :delay="500" type="is-dark" position="is-bottom">
             <span class="icon">
               <i class="mdi mdi-content-duplicate"></i>
@@ -203,6 +203,7 @@ input[type=number] {
 <script>
 export default {
   props: [
+    'snippID',
     'snippName',
     'snippLang',
     'readOnly',

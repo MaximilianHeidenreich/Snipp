@@ -13,6 +13,7 @@
         <MenuBar
             @push-snipp="pushSnipp"
             @navigate-new="onNavigateNew"
+            @navigate-clone="onNavigateClone"
             @change-name="onChangeSnippName"
             @toggle-linenums="onToggleLineNums"
             @copy-clipboard="copyContentToClipboard"
@@ -21,6 +22,7 @@
             @change-owner-pin="onChangeOwnerPin"
 
             :version="appVersion"
+            :snippID="snippID"
             :snippName="snippName"
             :snippLang="snippLang"
             :readOnly="readOnly"
@@ -258,7 +260,53 @@ export default {
 
                 Toast.open({
                     duration: 10000,
-                    message: `Snipp could not be loaded!`,
+                    message: `😬 &nbsp; Snipp could not be loaded!`,
+                    position: 'is-bottom',
+                    type: 'is-danger'
+                })
+            }
+
+        }
+
+        // Clone
+        else if (this.$route.query.clone) {
+
+            consola.info(`Fetching Snipp data (${this.$route.query.clone})...`)
+
+            const result = await axios.get(
+                `${process.env.apiBaseUrl}/v1/snipp/${this.$route.query.clone}`,
+                {
+                    headers: {
+                        'owner-pin': this.ownerPin
+                    }
+                }
+            )
+
+            if (result.status === 200) {
+                consola.success('Snipp data received!')
+
+                // Update data.
+                this.$data.snippName = result.data.data.name
+                this.$data.snippLang = result.data.data.lang
+                this.$data.snippContent = result.data.data.content
+
+                this.$data.loading = false
+
+                Toast.open({
+                    duration: 10000,
+                    message: `👍 &nbsp; Snipp cloned! You can now edit & save it!`,
+                    position: 'is-bottom',
+                    type: 'is-success'
+                })
+
+            }
+            else {
+                consola.error('Error fetching data!')
+                console.log(result)
+
+                Toast.open({
+                    duration: 10000,
+                    message: `😬 &nbsp; Snipp could not be cloned!`,
                     position: 'is-bottom',
                     type: 'is-danger'
                 })
@@ -467,6 +515,11 @@ export default {
         // Navigate to /
         onNavigateNew() {
             this.$router.push({ path: `/` })
+        },
+
+        // Navigate to /?clone=${snippID}
+        onNavigateClone() {
+           this.$router.push({ path: `/?clone=${this.snippID}` }) 
         },
 
         // Toggles displaying line numbers.
