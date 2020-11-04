@@ -170,11 +170,16 @@ export default {
 
     // Tries to detect language of editor content.
     detectLanguage(event) {
+
+      // RET: Read only.
+      if (this.readOnly) return
+
       var lang = detectLang((event.clipboardData || window.clipboardData).getData('text')).toLowerCase();
       
       // Ignore unsupported languages.
       if (lang === 'c++') lang = 'clike'
       if (lang === 'unknown') lang = 'clike'
+      if (lang === 'html') lang = 'markup'
 
       this.$emit('change-lang', lang)
 

@@ -17,6 +17,8 @@
             @toggle-linenums="onToggleLineNums"
             @copy-clipboard="copyContentToClipboard"
             @change-lang="onChangeSnippLang"
+            @change-darkMode="onChangeDarkMode"
+            @change-owner-pin="onChangeOwnerPin"
 
             :version="appVersion"
             :snippName="snippName"
@@ -59,6 +61,15 @@
 *::-webkit-scrollbar-thumb {        
   box-shadow: inset 0 0 0 10px;
 }
+
+/* Daek Mode */
+/*.invert {
+    filter: invert(1) hue-rotate(180deg);
+}
+html {
+    filter: invert(1) hue-rotate(180deg);
+}*/
+
 </style>
 
 <script>
@@ -182,15 +193,18 @@ export default {
         },
 
         // Returns existing owner pin or generates & stores new one.
-        ownerPin() {
-            if (typeof(Storage) !== "undefined") {
-                if (!localStorage.hasOwnProperty('ownerPin')) {
-                    const genPin = () => (Math.floor(Math.random() * 10000) + 10000).toString().substring(1)
-                    localStorage.setItem('ownerPin', `${genPin()}-${genPin()}`)
+        ownerPin: {
+            cache: false,
+            get: function () {
+                if (typeof(Storage) !== "undefined") {
+                    if (!localStorage.hasOwnProperty('ownerPin')) {
+                        const genPin = () => (Math.floor(Math.random() * 10000) + 10000).toString().substring(1)
+                        localStorage.setItem('ownerPin', `${genPin()}-${genPin()}`)
+                    }
+                    return localStorage.getItem('ownerPin')
                 }
-                return localStorage.getItem('ownerPin')
+                else return "0000-0000";
             }
-            else return "0000-0000";
         },
 
         readOnly() { return !this.$data.isOwner },
@@ -462,6 +476,18 @@ export default {
 
         onChangeSnippLang(event) {
             this.$data.snippLang = event
+        },
+
+        onChangeDarkMode(event) {
+            this.$data.darkMode = event
+            console.log(this.$data.darkMode)
+        },
+
+        onChangeOwnerPin(event) {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('ownerPin', event)
+                consola.info(`Updated ownerPin: ${event}`)
+            }
         },
 
         // Clipboard helper.

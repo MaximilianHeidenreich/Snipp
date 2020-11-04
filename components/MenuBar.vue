@@ -74,89 +74,75 @@
 
       <!-- Settings -->
       <b-navbar-item>
-        <div class="dropdown is-right">
-          <div class="dropdown-trigger">
-            <span class="icon" aria-haspopup="true" aria-controls="dropdown-menu">
-              <i class="mdi mdi-cog"></i>
-            </span>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu-settings" role="menu">
-            <div class="dropdown-content">
-              <div class="dropdown-item">
-                <p><strong>Owner PIN</strong></p>
-                <br>
-                <div class="field is-horizontal">
-                  <div class="field-body">
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <div class="control">
-                        <button class="button button is-white " disabled><strong>-</strong></button>
-                      </div>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="ml-0 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr class="dropdown-divider">
-              <div class="dropdown-item">
-                <p><strong>Theme</strong></p>
-                <br>
-                <div class="field">
-                    <b-switch 
-                        v-model="darkMode"
-                        passive-type='is-light'
-                        type='is-dark'>
-                        {{ darkMode ? "Dark Mode" : "Light Mode" }}
-                    </b-switch>
-                </div>
-              </div>
-              <hr class="dropdown-divider">
-              <div class="dropdown-item">
-                <p><strong>About</strong></p>
-                <br>
-                <p>Version: <code>{{ version }}</code></p>
-              </div>
+        <b-dropdown position="is-bottom-left" append-to-body aria-role="menu" trap-focus>
+          <span class="icon" slot="trigger" role="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <i class="mdi mdi-cog"></i>
+          </span>
+
+          <b-dropdown-item
+              aria-role="menu-item"
+              :focusable="false"
+              custom
+              >
+            <p><strong>Owner PIN</strong></p>
+            <br>
+            <b-field style="min-width: 250px" grouped>
+                <b-field 
+                  :type="{ 'is-danger': !isPinValid.first }"
+                  :message="{ 'Invalid PIN.': !isPinValid.first }"
+                  expanded>
+                    <b-input 
+                      v-model="pinFirstPart" 
+                      type="text" 
+                      maxlength="4" 
+                      placeholder="0000"
+                      />
+                </b-field>
+                <b-field expanded>
+                  <button class="button button is-white " disabled><strong>-</strong></button>
+                </b-field>
+                <b-field 
+                  :type="{ 'is-danger': !isPinValid.second }"
+                  :message="{ 'Invalid PIN.': !isPinValid.second }"
+                  expanded>
+                    <b-input 
+                    v-model="pinSecondPart" 
+                    type="text" 
+                    maxlength="4" 
+                    placeholder="0000"
+                    />
+                </b-field>
+            </b-field>
+            <small>Using the same owner pin will allow you to edit Snipps you created.</small>
+          </b-dropdown-item>
+          <hr class="dropdown-divider">
+          <b-dropdown-item
+              aria-role="menu-item"
+              :focusable="false"
+              custom
+              >
+            <p><strong>Theme</strong></p>
+            <br>
+            <div class="field">
+                <b-switch 
+                    v-model="selectedDarkMode"
+                    passive-type='is-light'
+                    type='is-dark'>
+                    {{ selectedDarkMode ? "Dark Mode" : "Light Mode" }}
+                </b-switch>
             </div>
-          </div>
-        </div>
+          </b-dropdown-item>
+          <hr class="dropdown-divider">
+          <b-dropdown-item
+              aria-role="menu-item"
+              :focusable="false"
+              custom
+              >
+            <p><strong>About</strong></p>
+            <br>
+            <p>Version: <code>{{ version }}</code></p>
+          </b-dropdown-item>
+        </b-dropdown>
       </b-navbar-item>
 
       <!-- Search -->
@@ -225,17 +211,59 @@ export default {
     'supportedLanguages',
   ],
 
+
   // ========== DATA
   data() {
     return {
       selectedLanguage: 'javascript',
+      selectedDarkMode: this.darkMode,
+      pinFirstPart: '',
+      pinSecondPart: '',
     }
   },
 
+
+  // ========== COMPUTED
+  computed: {
+
+    // Returns existing owner pin or generates & stores new one.
+    ownerPin() {
+        if (typeof(Storage) !== "undefined") {
+            if (!localStorage.hasOwnProperty('ownerPin')) {
+                const genPin = () => (Math.floor(Math.random() * 10000) + 10000).toString().substring(1)
+                localStorage.setItem('ownerPin', `${genPin()}-${genPin()}`)
+            }
+            return localStorage.getItem('ownerPin')
+        }
+        else return "0000-0000";
+    },
+
+    // Returns whether the entered parts are valid.
+    isPinValid() {
+      var validFirst = (this.pinFirstPart.match(/^[0-9]+$/) != null) && (this.pinFirstPart.length === 4)
+      var validSecond = (this.pinSecondPart.match(/^[0-9]+$/) != null)&& (this.pinSecondPart.length === 4)
+      
+      return { 'first': validFirst, 'second': validSecond, 'full': (validFirst && validSecond) }
+    },
+
+    // Returns the assembled owner pin.
+    ownerPinFullInputValue() {
+      return `${this.pinFirstPart}-${this.pinSecondPart}`
+    },
+
+
+  },
+
+
+  // ========== HOOKS
   mounted() {
 
     // Change selected language.
     this.$data.selectedLanguage = this.snippLang
+
+    // Prefill owner pin inputs.
+    this.$data.pinFirstPart = this.ownerPin.split('-')[0]
+    this.$data.pinSecondPart = this.ownerPin.split('-')[1]
 
     // Enable dropdowns.
     document.querySelector('.dropdown').addEventListener('click', function(event) {
@@ -245,14 +273,24 @@ export default {
 
   },
 
+
   // ========== WATCH
   watch: {
     snippLang: function () {
       this.$data.selectedLanguage = this.snippLang
     },
+    selectedDarkMode: function () {
+      this.$emit('change-darkMode', this.selectedDarkMode) 
+    }, 
     selectedLanguage: function () {
       this.$emit('change-lang', this.$data.selectedLanguage) 
-    }
+    },
+    pinFirstPart: function () {
+      if (this.isPinValid.full) this.$emit('change-owner-pin', this.ownerPinFullInputValue)
+    },
+    pinSecondPart: function () {
+      if (this.isPinValid.full) this.$emit('change-owner-pin', this.ownerPinFullInputValue)
+    },
   },
 
 }
