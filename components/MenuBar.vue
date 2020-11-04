@@ -35,7 +35,7 @@
             <template slot="label">
               <span class="has-text-grey-dark">Name</span>
             </template>
-            <b-input class="is-small" placeholder="My Snippet" :value="snippName" @input="$emit('change-name', $event)" maxlength="15" :hasCounter="false" :readonly="readOnly"/>
+            <b-input class="is-small" placeholder="My Snippet" :value="snippName" @input="$emit('change-name', $event)" maxlength="20" :hasCounter="false" :readonly="readOnly"/>
           </b-field>
       </b-navbar-item>
         
