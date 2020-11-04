@@ -107,6 +107,7 @@ export default {
     PrismEditor
   },
 
+
   // ========== PROPS
   props: [
     'loading',
@@ -118,6 +119,7 @@ export default {
     'readOnly'
   ],
 
+
   // ========== WATCH
   watch: {
     snippContent: function () {
@@ -125,6 +127,7 @@ export default {
     },
     readOnly: function () { console.log(this.readOnly) }
   },
+
 
   // ========== DATA
   data() {
@@ -141,6 +144,7 @@ export default {
     //this.setCode(this.b64_to_utf8(this.snippContent))
 
   },
+
 
   // ========== COMPUTED
   computed: {

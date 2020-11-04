@@ -172,6 +172,7 @@ export default {
 
         }
     },
+    
 
     // ========== WATCH
     watch: {
@@ -179,6 +180,7 @@ export default {
             this.$refs.codeEditor.setCode() // = this.b64_to_utf8(this.snippContent)
         }
     },
+
 
     // ========== COMPUTED
     computed: {
@@ -219,6 +221,7 @@ export default {
         encodedEditorContent() { return this.utf8_to_b64(this.rawEditorContent) },
 
     },
+
 
     // ========== FETCH
     async fetch() {
@@ -271,6 +274,7 @@ export default {
     },
     fetchOnServer: false,
 
+
     // ========== HOOKS
     mounted() {
 
@@ -282,6 +286,7 @@ export default {
     created() {
         // Foo
     },
+
 
     // ========== METHODS
     methods: {
