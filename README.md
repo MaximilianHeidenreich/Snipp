@@ -210,4 +210,4 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 [issues-url]: https://github.com/MaximilianHeidenreich/Snipp-api/issues
 [license-shield]: https://img.shields.io/github/license/MaximilianHeidenreich/Snipp?style=flat-square
 [license-url]: https://github.com/MaximilianHeidenreich/Snipp/blob/master/LICENSE.md
-[snipp-bannergif]: https://i.imgur.com/y8UTsHq.gif
+[snipp-bannergif]: https://i.imgur.com/LjEA3Vk.gif
