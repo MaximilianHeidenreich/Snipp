@@ -146,10 +146,10 @@
             <br>
             <div class="field">
                 <b-switch 
-                    v-model="darkMode"
+                    v-model="selectedDarkMode"
                     passive-type='is-light'
                     type='is-dark'>
-                    {{ darkMode ? "Dark Mode" : "Light Mode" }}
+                    {{ selectedDarkMode ? "Dark Mode" : "Light Mode" }}
                 </b-switch>
             </div>
           </b-dropdown-item>
@@ -236,6 +236,7 @@ export default {
   data() {
     return {
       selectedLanguage: 'javascript',
+      selectedDarkMode: this.darkMode,
     }
   },
 
@@ -257,6 +258,9 @@ export default {
     snippLang: function () {
       this.$data.selectedLanguage = this.snippLang
     },
+    selectedDarkMode: function () {
+      this.$emit('change-darkMode', this.selectedDarkMode) 
+    }, 
     selectedLanguage: function () {
       this.$emit('change-lang', this.$data.selectedLanguage) 
     }

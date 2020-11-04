@@ -17,6 +17,7 @@
             @toggle-linenums="onToggleLineNums"
             @copy-clipboard="copyContentToClipboard"
             @change-lang="onChangeSnippLang"
+            @change-darkMode="onChangeDarkMode"
 
             :version="appVersion"
             :snippName="snippName"
@@ -462,6 +463,11 @@ export default {
 
         onChangeSnippLang(event) {
             this.$data.snippLang = event
+        },
+
+        onChangeDarkMode(event) {
+            this.$data.darkMode = event
+            console.log(this.$data.darkMode)
         },
 
         // Clipboard helper.
