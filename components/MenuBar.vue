@@ -41,6 +41,18 @@
         
     </template>
     <template slot="end">
+
+        <!-- Language -->
+        <b-navbar-item>
+            <b-field>
+              <b-select v-model="selectedLanguage" size="is-small" placeholder="Select language" icon="web">
+                  <optgroup v-for="section in supportedLanguages" :key="section.title" :label="section.title">
+                      <option v-for="lang in section.langs" :key="lang" :value="lang.toLowerCase()">{{ lang }}</option>
+                  </optgroup>
+
+              </b-select>
+          </b-field>
+        </b-navbar-item>
         
       <!-- Toggle Lines -->
       <b-navbar-item v-on:click="$emit('toggle-linenums', {})">
@@ -206,12 +218,24 @@ input[type=number] {
 export default {
   props: [
     'snippName',
+    'snippLang',
     'readOnly',
     'darkMode',
-    'version'
+    'version',
+    'supportedLanguages',
   ],
 
+  // ========== DATA
+  data() {
+    return {
+      selectedLanguage: 'javascript',
+    }
+  },
+
   mounted() {
+
+    // Change selected language.
+    this.$data.selectedLanguage = this.snippLang
 
     // Enable dropdowns.
     document.querySelector('.dropdown').addEventListener('click', function(event) {
@@ -219,6 +243,16 @@ export default {
       document.querySelector('.dropdown').classList.toggle('is-active')
     })
 
+  },
+
+  // ========== WATCH
+  watch: {
+    snippLang: function () {
+      this.$data.selectedLanguage = this.snippLang
+    },
+    selectedLanguage: function () {
+      this.$emit('change-lang', this.$data.selectedLanguage) 
+    }
   },
 
 }

@@ -58,6 +58,11 @@ export default {
   build: {
   },
 
+  // Babel configurtation
+  babel: {
+    babelrc: true, cacheDirectory: undefined, presets: ["@nuxt/babel-preset-app"]
+},
+
   // Env configuration
   env: {
     appVersion: version,

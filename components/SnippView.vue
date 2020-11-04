@@ -16,21 +16,28 @@
             @change-name="onChangeSnippName"
             @toggle-linenums="onToggleLineNums"
             @copy-clipboard="copyContentToClipboard"
+            @change-lang="onChangeSnippLang"
 
             :version="appVersion"
             :snippName="snippName"
+            :snippLang="snippLang"
             :readOnly="readOnly"
             :darkMode="darkMode"
+            :supportedLanguages="supportedLanguages"
         />
 
         <!-- CodeEditor -->
         <CodeEditor
             ref="codeEditor"
+
+            @change-lang="onChangeSnippLang"
             
             :loading="loading"
+            :darkTheme="darkTheme"
+
+            :language="snippLang"
             :displayLineNums="displayLineNums"
             :readOnly="readOnly"
-            :darkTheme="darkTheme"
             :ownerPin="ownerPin"
             :snippContent="snippContent"
         />
@@ -59,6 +66,76 @@ const consola = require('consola')
 import axios from 'axios'
 import { ToastProgrammatic as Toast } from 'buefy'
 
+const supportedLanguages = [
+  {
+    "title": "Popular",
+    "langs": [
+      "Clike",
+      "Java",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "JSON",
+      "Yaml",
+      "Markup",
+      //"HTML",
+      "SQL",      
+    ]
+  },
+  {
+    "title": "Templating",
+    "langs": [
+      "JSX",
+      "TSX",
+      "HandleBars",
+      "Pug",
+    ]
+  },
+  {
+    "title": "Web",
+    "langs": [
+      "HTTP",
+      "SASS",
+      "SCSS",
+      "CSS",
+    ]
+  },
+  {
+    "title": "Programming",
+    "langs": [
+      //"Switft",
+      "Go",
+      "C",
+      "Rust",
+      "CSharp",
+      "Perl",
+      "PHP",
+      "Ruby",
+      "PowerShell",
+      "AspNet",
+      "Lua",
+      "CoffeeScript",
+    ]
+  },
+  {
+    "title": "Other",
+    "langs": [  
+      "Bash",
+      "Docker",
+      "Nginx",
+      //"XML",
+      //"SVG",
+      "GraphQL",
+      //"Haxe",
+      "Ignore",
+      "Ini",
+      "Smalltalk",
+      "CMake",
+      "Dart",
+    ]
+  },
+]
+
 export default {
     
     // ========== DATA
@@ -68,7 +145,7 @@ export default {
             // Snipp
             snippID: this.$route.params.snippID ? this.$route.params.snippID : null,
             snippName: '',
-            snippLang: 'js',
+            snippLang: 'javascript',
             isOwner: true,
             snippContent: 'Y29uc29sZS5sb2coIkhlbGxvIFdvcmxkISIpOw==',
 
@@ -79,7 +156,8 @@ export default {
             // Util.
             loading: true,
             busy: false,
-            appVersion: process.env.appVersion
+            appVersion: process.env.appVersion,
+            supportedLanguages: supportedLanguages
 
         }
     },
@@ -380,6 +458,10 @@ export default {
 
         onChangeSnippName(event) {
             this.$data.snippName = event
+        },
+
+        onChangeSnippLang(event) {
+            this.$data.snippLang = event
         },
 
         // Clipboard helper.
