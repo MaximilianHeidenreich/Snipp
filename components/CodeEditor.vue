@@ -1,5 +1,5 @@
 <template>
-  <section class="section editor-section">
+  <section class="section editor-section" v-on:paste="detectLanguage">
     <div class="loading-skeleton" v-if="loading">
       <b-skeleton width="10%" animated="animated"></b-skeleton>
       <b-skeleton width="40%" animated="animated"></b-skeleton>
@@ -56,6 +56,7 @@
 const consola = require('consola')
 import axios from 'axios'
 import { PrismEditor } from 'vue-prism-editor'
+const detectLang = require('lang-detector');
 import 'vue-prism-editor/dist/prismeditor.min.css'
 import { highlight, languages } from 'prismjs/components/prism-core'
 import 'prismjs/components/prism-markup'
@@ -145,7 +146,7 @@ export default {
   computed: {
 
       // Editor content
-      editorContent() { return this.$refs.editor.content },
+      // editorCode() { return this.$refs.editor.code },
 
   },
 
@@ -165,6 +166,18 @@ export default {
     // Sets the contents.
     setCode(text) {
       this.$data.code = text
+    },
+
+    // Tries to detect language of editor content.
+    detectLanguage(event) {
+      var lang = detectLang((event.clipboardData || window.clipboardData).getData('text')).toLowerCase();
+      
+      // Ignore unsupported languages.
+      if (lang === 'c++') lang = 'clike'
+      if (lang === 'unknown') lang = 'clike'
+
+      this.$emit('change-lang', lang)
+
     },
 
     // Force update

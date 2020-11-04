@@ -29,6 +29,8 @@
         <!-- CodeEditor -->
         <CodeEditor
             ref="codeEditor"
+
+            @change-lang="onChangeSnippLang"
             
             :loading="loading"
             :darkTheme="darkTheme"
