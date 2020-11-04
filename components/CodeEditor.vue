@@ -58,10 +58,46 @@ import axios from 'axios'
 import { PrismEditor } from 'vue-prism-editor'
 import 'vue-prism-editor/dist/prismeditor.min.css'
 import { highlight, languages } from 'prismjs/components/prism-core'
+import 'prismjs/components/prism-markup'
+import 'prismjs/components/prism-markdown'
+import 'prismjs/components/prism-markup-templating'
 import 'prismjs/components/prism-clike'
+import 'prismjs/components/prism-css'
 import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-markup';
-import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-python'
+import 'prismjs/components/prism-lua'
+import 'prismjs/components/prism-coffeescript'
+import 'prismjs/components/prism-perl'
+import 'prismjs/components/prism-ruby'
+import 'prismjs/components/prism-scss'
+import 'prismjs/components/prism-sass'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-java'
+import 'prismjs/components/prism-c'
+import 'prismjs/components/prism-rust'
+import 'prismjs/components/prism-go'
+import 'prismjs/components/prism-csharp'
+import 'prismjs/components/prism-powershell'
+import 'prismjs/components/prism-aspnet'
+import 'prismjs/components/prism-smalltalk'
+import 'prismjs/components/prism-cmake'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-yaml'
+import 'prismjs/components/prism-sql'
+import 'prismjs/components/prism-http'
+import 'prismjs/components/prism-docker'
+import 'prismjs/components/prism-nginx'
+import 'prismjs/components/prism-graphql'
+import 'prismjs/components/prism-ignore'
+import 'prismjs/components/prism-ini'
+import 'prismjs/components/prism-dart'
+import 'prismjs/components/prism-php'
+import 'prismjs/components/prism-handlebars'
+import 'prismjs/components/prism-pug'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
+
 
 export default {
 
@@ -75,6 +111,7 @@ export default {
     'loading',
     'darkTheme',
 
+    'language',
     'displayLineNums',
     'snippContent',
     'readOnly'
@@ -117,7 +154,7 @@ export default {
   methods: {
 
     highlighter(code) {
-      return highlight(code, languages.js); // languages.<insert language> to return html with markup
+      return highlight(code, languages[this.language]);
     },
 
     createJar() {
