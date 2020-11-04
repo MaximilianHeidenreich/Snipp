@@ -175,6 +175,7 @@ export default {
       // Ignore unsupported languages.
       if (lang === 'c++') lang = 'clike'
       if (lang === 'unknown') lang = 'clike'
+      if (lang === 'html') lang = 'markup'
 
       this.$emit('change-lang', lang)
 
