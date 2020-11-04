@@ -18,6 +18,7 @@
             @copy-clipboard="copyContentToClipboard"
             @change-lang="onChangeSnippLang"
             @change-darkMode="onChangeDarkMode"
+            @change-owner-pin="onChangeOwnerPin"
 
             :version="appVersion"
             :snippName="snippName"
@@ -477,6 +478,10 @@ export default {
         onChangeDarkMode(event) {
             this.$data.darkMode = event
             console.log(this.$data.darkMode)
+        },
+
+        onChangeOwnerPin(event) {
+            if (typeof(Storage) !== "undefined") localStorage.setItem('ownerPin', event)
         },
 
         // Clipboard helper.
