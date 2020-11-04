@@ -289,8 +289,6 @@ export default {
         // Creates / Updates Snipp.
         pushSnipp() {
             const that = this;
-
-            console.log('PIN: '+this.ownerPin)
             
             // RET: Busy
             if (this.$data.busy) return
