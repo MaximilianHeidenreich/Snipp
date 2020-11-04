@@ -75,7 +75,8 @@
 
 - [x] **Create & Share** snippets accessible by short IDs (e.g. ""EEmt6k)
 - [x] **Edit** snippets after publishing them *(No login required!)*
-- [x] **Clone** pastes if you want to make changes to other peoples snippets
+- [x] **Clone** snippets if you want to make changes to other peoples snippets
+- [x] **Copy** the content of any snippet to your clipboard with just one click
 - [x] Visual features
   - [x] Clean & Modern UI
   - [x] Syntax highlighting
