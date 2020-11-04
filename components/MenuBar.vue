@@ -145,37 +145,6 @@
         </b-dropdown>
       </b-navbar-item>
 
-      <!-- Search -->
-      <!--<div class="navbar-item">
-        <b-field>
-          <b-autocomplete
-              :data="data"
-              placeholder="Search..."
-              field="snippSearch"
-              icon="magnify"
-              :loading="isFetching"
-              @typing="getAsyncData"
-              @select="option => selected = option" rounded>
-
-              <template slot-scope="props">
-                  <div class="media">
-                      <div class="media-left">
-                          <img width="32" :src="`https://image.tmdb.org/t/p/w500/${props.option.poster_path}`">
-                      </div>
-                      <div class="media-content">
-                          {{ props.option.title }}
-                          <br>
-                          <small>
-                              Released at {{ props.option.release_date }},
-                              rated <b>{{ props.option.vote_average }}</b>
-                          </small>
-                      </div>
-                  </div>
-              </template>
-          </b-autocomplete>
-        </b-field>
-      </div>-->
-
     </template>
   </b-navbar>
 </template>

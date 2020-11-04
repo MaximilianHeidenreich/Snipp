@@ -49,138 +49,83 @@
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
+  - [Features:](#features)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Local Installation](#local-installation)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 
 
+<br></br>
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-**! This project is still under development, I will be "finishing" it in a few days, which includes writing docs & guides. **
 
-Are you tired of using pastebins that are using old Bootstrap styles or look like their are from the early 2000s?
+***Are you tired of using pastebins which look like they were designed in the early 2000s?***
 
-If this is the case, you should try Snipp. Snipp aims to be a modern, minimalistic yet powerful pastebin tool.
+***Fear not! Snipp got you covered.***
 
-Features include:
-- Create pastes ("snipps") globally accessible by short IDs (e.g. "EEmt6k")
-- Support for multiple languages
-- Syntax highlighting
-- Ability to toggle line numbers
-- A clean, modern UI
-- Light & Dark Theme
-- Clone pastes
-- Ability to edit pastes after saving them (if you created it) -> No login required
-- Simple API which can be used to extend Snipp (e.g. write custom cli tools)
-- Open-Source using GPL-3.0 license -> You can basically do whatever you want with it (See [License Info](https://choosealicense.com/licenses/gpl-3.0/) for further details about GPL-3.0)
+> Snipp is a powerful, user friendly pastebin tool with a modern aesthetic.
 
-The project is split into 2 codebases. The "Snipp" repository includes the frontend (Nuxt.js & Vue).
-The "[Snipp-api](https://github.com/MaximilianHeidenreich/Snipp-api)" repository includes the API server (Express & PostgreSQL).
+### Features:
 
-If you want to use the frontend, you will have to deploy the API server somewhere. You can either host it on your own server or easily deploy it on services like Heroku.
+- [x] **Create & Share** snippets accessible by short IDs (e.g. ""EEmt6k)
+- [x] **Edit** snippets after publishing them *(No login required!)*
+- [x] **Clone** snippets if you want to make changes to other peoples snippets
+- [x] **Copy** the content of any snippet to your clipboard with just one click
+- [x] Visual features
+  - [x] Clean & Modern UI
+  - [x] Syntax highlighting
+  - [ ] Light & Dark Theme
+  - [x] Line numbers *(togglable)*
+
+- [x] Simple **API** *(Feel free to extend it. Maybe a CLI Tool?)*
+- [x] **Open Source** *(GPL-3.0, see [License info](https://choosealicense.com/licenses/gpl-3.0/) for further details)*
 
 
+<br></br>
 <!-- GETTING STARTED -->
 ## Getting Started
 
+> **:bulb:** The Snipp project is split into 2 codebases!
+> - [Snipp (Frontend)](https://github.com/MaximilianHeidenreich/Snipp)
+> - [Snipp-API (API)](https://github.com/MaximilianHeidenreich/Snipp-api)
+> 
+> The frontend only contains the Nuxt.js (Vue) project. It simply provides a clean ui to interface 
+> with the backend API. If you want to host Snipp yourself, please make sure you have an API instance 
+> running somewhere!
+
+
+
+<!--If you want to use the frontend, you will have to deploy the API server somewhere. You can either host it on your own server or easily deploy it on services like Heroku.
+
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps.-->
 
 ### Prerequisites
 
 Please ensure that you have installed & configured all of the following requirements:
-* [npm](https://npme.npmjs.com/docs/cli/installation.html) / [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-* [PostgreSQL Database](https://www.postgresql.org/docs/13/installation.html)
-* [Snipp API](https://github.com/MaximilianHeidenreich/Snipp-api)
+- [npm](https://npme.npmjs.com/docs/cli/installation.html) / [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
+- [PostgreSQL Database](https://www.postgresql.org/docs/13/installation.html)
+- [Snipp API](https://github.com/MaximilianHeidenreich/Snipp-api)
 
-### Installation
+Before you launch the server or build the project, you need to configure the following ENV 
+variables inside the `.env` file:
 
-1. Create a .env file containing your frontend & [API](https://github.com/MaximilianHeidenreich/Snipp-api) URL
-```sh
-BASE_URL="http://localhost:3000"
-API_BASE_URL="http://localhost:5000"
-```
-2. Clone the repo
-```sh
-git clone https://github.com/MaximilianHeidenreich/Snipp.git
-```
-3. Install NPM/Yarn packages
-```sh
-npm install
+```bash
+# ! Do not append a '/' to the URLs !
 
-or
+API_BASE_URL="https://yourApiUrl.com"   # The URL where the API is hosted / accessible. 
 
-yarn install
-```
-4. Create the required database table (TODO: Move to API docs).
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
-5. Start the server
-```sh
-npm start
-
-or
-
-yarn start
+BASE_URL="https://yourAccessUrl.com"    # The URL where Snipp frontend will be accessed from.
 ```
 
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/MaximilianHeidenreich/Snipp-api/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the GNU GPLv3 License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Maximilian Heidenreich - github@maximilian-heidenreich.de
-
-Project Link: [https://github.com/MaximilianHeidenreich/Snipp](https://github.com/MaximilianHeidenreich/Snipp)
-
-
-# Snipp
-
-## Build Setup
+### Local Installation
 
 ```bash
 # install dependencies
@@ -192,10 +137,108 @@ $ yarn dev
 # build for production and launch server
 $ yarn build
 $ yarn start
-
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+For detailed explanation on how Nuxt.js works, check out [Nuxt.js docs](https://nuxtjs.org).
+
+
+<br></br>
+<!-- USAGE EXAMPLES -->
+## Usage
+
+<br>
+<details>
+  <summary><b>Creating & Updating</b></summary>
+  <p>
+    To create a Snipp, simple click the '+' button and paste your text into the free editor space.
+    If you want, you can enter a name associated with the Snipp inside of the 'Name' field.
+    <br></br>
+    <i>💡 Snipp will automatically try to detect the language and select it for syntax highlighting.</i>
+    <br></br>
+    After you created your Snipp, you can always access it and make changes (See <i>Owner Pin</i> for further details). Just hit the 'save' button right next to the '+' button to pubish your changes.
+    <br></br>
+    <i>💡 When you create a Snipp, the url to access it will be copied to your clipboard!</i>
+  </p>
+</details>
+<br>
+<details>
+  <summary><b>Clone Snipp</b></summary>
+  <p>
+    If you come across a Snipp, which was created by someone else but you still want to edit it, 
+    you can use the 'clone' button (It replaces the 'save' button if you don't own the Snipp).
+    <br></br>
+    After cloning the Snipp, make your changes and hit the 'save' button. Now it will be yours :)
+    <br></br>
+    <i>💡 When you published your changes, the url to access the Snipp will be copied to your clipboard!</i>
+  </p>
+</details>
+<br>
+<details>
+  <summary><b>Owner Pin</b></summary>
+  <p>
+    The 'Owner Pin' is a 8-digit pin (0000-0000) which is used to identify a client.
+    <br></br>
+    Important notes:
+    <ul>
+      <li>
+        The owner pin is no secure identification token! It only provides a basic level of security 
+        to prevent everyone from editing every Snipp.
+      </li>
+      <li>
+        The owner pin is automatically generated when a client visits the Snipp frontend for the first time.
+      </li>
+      <li>
+        A client can change his PIN to whatever he wants (as long as it meets the format requirements).
+      </li>
+    </ul>
+    <br></br>
+    If you want to use the same PIN on multiple devices to enable editing access to your Snipps, 
+    just select the 'gear' icon on your main device. Remember the PIN which is displayed at the top 
+    and insert it into your other clients settings.
+  </p>
+</details>
+<br>
+<details>
+  <summary><b>Visual Configuration</b></summary>
+  <p>
+    // TODO: Add visual config docs.
+  </p>
+</details>
+
+
+<br></br>
+<!-- ROADMAP -->
+## Roadmap
+
+
+See the [open issues](https://github.com/MaximilianHeidenreich/Snipp-api/issues) for a list of proposed features (and known issues).
+
+
+<br></br>
+<!-- CONTRIBUTING -->
+## Contributing
+
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+<br></br>
+<!-- CONTACT -->
+## Contact
+
+
+Maximilian Heidenreich - github@maximilian-heidenreich.de
+
+Project Link: [https://github.com/MaximilianHeidenreich/Snipp](https://github.com/MaximilianHeidenreich/Snipp)
+
+
+
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
