@@ -193,15 +193,18 @@ export default {
         },
 
         // Returns existing owner pin or generates & stores new one.
-        ownerPin() {
-            if (typeof(Storage) !== "undefined") {
-                if (!localStorage.hasOwnProperty('ownerPin')) {
-                    const genPin = () => (Math.floor(Math.random() * 10000) + 10000).toString().substring(1)
-                    localStorage.setItem('ownerPin', `${genPin()}-${genPin()}`)
+        ownerPin: {
+            cache: false,
+            get: function () {
+                if (typeof(Storage) !== "undefined") {
+                    if (!localStorage.hasOwnProperty('ownerPin')) {
+                        const genPin = () => (Math.floor(Math.random() * 10000) + 10000).toString().substring(1)
+                        localStorage.setItem('ownerPin', `${genPin()}-${genPin()}`)
+                    }
+                    return localStorage.getItem('ownerPin')
                 }
-                return localStorage.getItem('ownerPin')
+                else return "0000-0000";
             }
-            else return "0000-0000";
         },
 
         readOnly() { return !this.$data.isOwner },
@@ -286,6 +289,8 @@ export default {
         // Creates / Updates Snipp.
         pushSnipp() {
             const that = this;
+
+            console.log('PIN: '+this.ownerPin)
             
             // RET: Busy
             if (this.$data.busy) return
@@ -481,7 +486,10 @@ export default {
         },
 
         onChangeOwnerPin(event) {
-            if (typeof(Storage) !== "undefined") localStorage.setItem('ownerPin', event)
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem('ownerPin', event)
+                consola.info(`Updated ownerPin: ${event}`)
+            }
         },
 
         // Clipboard helper.
