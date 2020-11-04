@@ -6,7 +6,7 @@
                 <b-icon icon="content-cut" size="is-large"> </b-icon>
                 Snipp
             </h1>
-            <h2 class="subtitle is-6">A clean way to share various snippets.</h2>
+            <h2 class="subtitle is-6">{{ titleMessage }}</h2>
         </div>
 
         <!-- MenuBar -->
@@ -149,6 +149,38 @@ const supportedLanguages = [
   },
 ]
 
+const titleMessages = [
+    'Welcome back!',
+    'Why did the computer get cold? Because it forgot to close windows.',
+    'I love pressing F5. It\'s so refreshing.',
+    'You seem like a nice person...',
+    'You may call me Steve.',
+    '@todo Insert witty welcome message',
+    'Looking for sense of humour, please hold on.',
+    'Java developers never RIP. They just get Garbage Collected.',
+    'Web developers do it with <style>.',
+    'Chuck Norris never git push. The repo pulls before.',
+    'I\’ve got problem for your solution!',
+    'Why are they called apartments if they are all stuck together?',
+    'I\'m not lazy, I\'m just relaxed!',
+    'Never steal. The government hates competition!',
+    'How did you get here?',
+    'Have a good day.',
+    'Your left thumb points to the right and your right thumb points to the left.',
+    'Time flies when you’re having fun.',
+    'Let\'s take a mindfulness minute.',
+    'All your web browser are belong to us.',
+    'Warning: Don\'t set yourself on fire.',
+    'Do you come here often?',
+    'Do not run! We are your friends!',
+    'Why so serious?',
+    'The server is powered by a lemon and two electrodes.',
+    '(Pay no attention to the man behind the curtain)',
+    'Would you prefer chicken, steak, or tofu?',
+    'Have a great day.',
+    'Don\'t think of purple hippos!',
+]
+
 export default {
     
     // ========== DATA
@@ -215,6 +247,11 @@ export default {
 
         // Whether to use dark theme.
         darkTheme() { return false },
+
+        // Returns a random title message.
+        titleMessage() {
+            return titleMessages[Math.floor(Math.random() * titleMessages.length)]
+        },
 
         // Returns raw editor content.
         rawEditorContent() { return this.$refs.codeEditor.code },
