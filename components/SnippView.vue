@@ -60,6 +60,15 @@
 *::-webkit-scrollbar-thumb {        
   box-shadow: inset 0 0 0 10px;
 }
+
+/* Daek Mode */
+/*.invert {
+    filter: invert(1) hue-rotate(180deg);
+}
+html {
+    filter: invert(1) hue-rotate(180deg);
+}*/
+
 </style>
 
 <script>
