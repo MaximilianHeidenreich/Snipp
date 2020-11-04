@@ -74,89 +74,96 @@
 
       <!-- Settings -->
       <b-navbar-item>
-        <div class="dropdown is-right">
-          <div class="dropdown-trigger">
-            <span class="icon" aria-haspopup="true" aria-controls="dropdown-menu">
-              <i class="mdi mdi-cog"></i>
-            </span>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu-settings" role="menu">
-            <div class="dropdown-content">
-              <div class="dropdown-item">
-                <p><strong>Owner PIN</strong></p>
-                <br>
-                <div class="field is-horizontal">
-                  <div class="field-body">
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <div class="control">
-                        <button class="button button is-white " disabled><strong>-</strong></button>
-                      </div>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="mr-1 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
-                    <div class="ml-0 field">
-                      <p class="control">
-                        <input class="input pinTokenInput" type="number" placeholder="0" max="1">
-                      </p>
-                    </div>
+        <b-dropdown position="is-bottom-left" append-to-body aria-role="menu" trap-focus>
+          <span class="icon" slot="trigger" role="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <i class="mdi mdi-cog"></i>
+          </span>
+
+          <b-dropdown-item
+              aria-role="menu-item"
+              :focusable="false"
+              custom
+              >
+            <p><strong>Owner PIN</strong></p>
+            <br>
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="mr-1 field">
+                  <div class="control">
+                    <button class="button button is-white " disabled><strong>-</strong></button>
                   </div>
                 </div>
-              </div>
-              <hr class="dropdown-divider">
-              <div class="dropdown-item">
-                <p><strong>Theme</strong></p>
-                <br>
-                <div class="field">
-                    <b-switch 
-                        v-model="darkMode"
-                        passive-type='is-light'
-                        type='is-dark'>
-                        {{ darkMode ? "Dark Mode" : "Light Mode" }}
-                    </b-switch>
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="mr-1 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
+                </div>
+                <div class="ml-0 field">
+                  <p class="control">
+                    <input class="input pinTokenInput" type="number" placeholder="0" max="1">
+                  </p>
                 </div>
               </div>
-              <hr class="dropdown-divider">
-              <div class="dropdown-item">
-                <p><strong>About</strong></p>
-                <br>
-                <p>Version: <code>{{ version }}</code></p>
-              </div>
             </div>
-          </div>
-        </div>
+          </b-dropdown-item>
+          <hr class="dropdown-divider">
+          <b-dropdown-item
+              aria-role="menu-item"
+              :focusable="false"
+              custom
+              >
+            <p><strong>Theme</strong></p>
+            <br>
+            <div class="field">
+                <b-switch 
+                    v-model="darkMode"
+                    passive-type='is-light'
+                    type='is-dark'>
+                    {{ darkMode ? "Dark Mode" : "Light Mode" }}
+                </b-switch>
+            </div>
+          </b-dropdown-item>
+          <hr class="dropdown-divider">
+          <b-dropdown-item
+              aria-role="menu-item"
+              :focusable="false"
+              custom
+              >
+            <p><strong>About</strong></p>
+            <br>
+            <p>Version: <code>{{ version }}</code></p>
+          </b-dropdown-item>
+        </b-dropdown>
       </b-navbar-item>
 
       <!-- Search -->
